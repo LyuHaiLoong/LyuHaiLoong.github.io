@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.gif?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML,CSS,JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;平常会做一些有意思的小案例练手，通常都会发到 codepen 上，但是 codepen 不能写分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;所以就在博客上开个案例分享系列，对 demo 做个剖析。目的以分享为主，然后也希望各路大神能给出改进的想法，在 review 中">
+<meta name="keywords" content="HTML,CSS,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端案例分享（一）：CSS+JS实现流星雨动画">
+<meta property="og:url" content="https://www.lvhailong.com/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/index.html">
+<meta property="og:site_name" content="码到成功">
+<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;平常会做一些有意思的小案例练手，通常都会发到 codepen 上，但是 codepen 不能写分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;所以就在博客上开个案例分享系列，对 demo 做个剖析。目的以分享为主，然后也希望各路大神能给出改进的想法，在 review 中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1080150/201810/1080150-20181031235706644-1683123670.gif">
+<meta property="og:updated_time" content="2018-12-24T17:37:15.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端案例分享（一）：CSS+JS实现流星雨动画">
+<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;平常会做一些有意思的小案例练手，通常都会发到 codepen 上，但是 codepen 不能写分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;所以就在博客上开个案例分享系列，对 demo 做个剖析。目的以分享为主，然后也希望各路大神能给出改进的想法，在 review 中">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1080150/201810/1080150-20181031235706644-1683123670.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.lvhailong.com/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/">
+
+
+
+
+
+  <title>前端案例分享（一）：CSS+JS实现流星雨动画 | 码到成功</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">码到成功</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">好的代码需要时间打磨，做人亦如是</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吕海龙(Lyu Hailoong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/user.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码到成功">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前端案例分享（一）：CSS+JS实现流星雨动画</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T01:35:04+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-25T01:37:15+08:00">
+                2018-12-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/案例分享/" itemprop="url" rel="index">
+                    <span itemprop="name">案例分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平常会做一些有意思的小案例练手，通常都会发到 codepen 上，但是 codepen 不能写分析。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以就在博客上开个案例分享系列，对 demo 做个剖析。目的以分享为主，然后也希望各路大神能给出改进的想法，在 review 中提升技术，发现乐趣~</p>
+<h3 id="1、效果图"><a href="#1、效果图" class="headerlink" title="1、效果图"></a>1、效果图</h3><p>完整效果，请移步 <a href="https://codepen.io/HaiLoongLyu/full/Lgqbzy/" target="_blank" rel="noopener">codepen-流星雨案例</a><br><br>纯 CSS 案例及本篇案例完整源码，请移步<a href="https://github.com/LyuHaiLoong/Demos" target="_blank" rel="noopener">The night of the metero</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1080150/201810/1080150-20181031235706644-1683123670.gif" alt=""><br><a id="more"></a></p>
+<h3 id="2、源码"><a href="#2、源码" class="headerlink" title="2、源码"></a>2、源码</h3><ul>
+<li><strong>HTML</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;mask&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;sky&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;moon&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div id=&quot;stars&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;cloud cloud-1&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;cloud cloud-2&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;cloud cloud-3&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>CSS</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line"> /* ------------reset------------ */</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html,</span><br><span class="line">body &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    min-width: 1000px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    min-height: 400px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*  ------------画布 ------------ */</span><br><span class="line">.container &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">/* 遮罩层 */</span><br><span class="line"></span><br><span class="line">#mask &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: rgba(0, 0, 0, .8);</span><br><span class="line">    z-index: 900;</span><br><span class="line">&#125;</span><br><span class="line">/* 天空背景 */</span><br><span class="line"></span><br><span class="line">#sky &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: linear-gradient(rgba(0, 150, 255, 1), rgba(0, 150, 255, .8), rgba(0, 150, 255, .5));</span><br><span class="line">&#125;</span><br><span class="line">/* 月亮 */</span><br><span class="line"></span><br><span class="line">#moon &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50px;</span><br><span class="line">    right: 200px;</span><br><span class="line">    width: 120px;</span><br><span class="line">    height: 120px;</span><br><span class="line">    background: rgba(251, 255, 25, 0.938);</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    box-shadow: 0 0 20px rgba(251, 255, 25, 0.5);</span><br><span class="line">    z-index: 9999;</span><br><span class="line">&#125;</span><br><span class="line">/* 闪烁星星 */</span><br><span class="line"></span><br><span class="line">.blink &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    background: rgb(255, 255, 255);</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    box-shadow: 0 0 5px rgb(255, 255, 255);</span><br><span class="line">    opacity: 0;</span><br><span class="line">    z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">/* 流星 */</span><br><span class="line"></span><br><span class="line">.star &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    opacity: 0;</span><br><span class="line">    z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.star::after &#123;</span><br><span class="line">    content: &quot;&quot;;</span><br><span class="line">    display: block;</span><br><span class="line">    border: solid;</span><br><span class="line">    border-width: 2px 0 2px 80px;</span><br><span class="line">    /*流星随长度逐渐缩小*/</span><br><span class="line">    border-color: transparent transparent transparent rgba(255, 255, 255, 1);</span><br><span class="line">    border-radius: 2px 0 0 2px;</span><br><span class="line">    transform: rotate(-45deg);</span><br><span class="line">    transform-origin: 0 0 0;</span><br><span class="line">    box-shadow: 0 0 20px rgba(255, 255, 255, .3);</span><br><span class="line">&#125;</span><br><span class="line">/* 云 */</span><br><span class="line"></span><br><span class="line">.cloud &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.cloud-1 &#123;</span><br><span class="line">    bottom: -100px;</span><br><span class="line">    z-index: 1000;</span><br><span class="line">    opacity: 1;</span><br><span class="line">    transform: scale(1.5);</span><br><span class="line">    -webkit-transform: scale(1.5);</span><br><span class="line">    -moz-transform: scale(1.5);</span><br><span class="line">    -ms-transform: scale(1.5);</span><br><span class="line">    -o-transform: scale(1.5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.cloud-2 &#123;</span><br><span class="line">    left: -100px;</span><br><span class="line">    bottom: -50px;</span><br><span class="line">    z-index: 999;</span><br><span class="line">    opacity: .5;</span><br><span class="line">    transform: rotate(7deg);</span><br><span class="line">    -webkit-transform: rotate(7deg);</span><br><span class="line">    -moz-transform: rotate(7deg);</span><br><span class="line">    -ms-transform: rotate(7deg);</span><br><span class="line">    -o-transform: rotate(7deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.cloud-3 &#123;</span><br><span class="line">    left: 120px;</span><br><span class="line">    bottom: -50px;</span><br><span class="line">    z-index: 999;</span><br><span class="line">    opacity: .1;</span><br><span class="line">    transform: rotate(-10deg);</span><br><span class="line">    -webkit-transform: rotate(-10deg);</span><br><span class="line">    -moz-transform: rotate(-10deg);</span><br><span class="line">    -ms-transform: rotate(-10deg);</span><br><span class="line">    -o-transform: rotate(-10deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    background: #fff;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-1 &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    top: -50px;</span><br><span class="line">    left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-2 &#123;</span><br><span class="line">    width: 150px;</span><br><span class="line">    height: 150px;</span><br><span class="line">    top: -50px;</span><br><span class="line">    left: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-3 &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    top: -100px;</span><br><span class="line">    left: 80px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-4 &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    top: -60px;</span><br><span class="line">    left: 300px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-5 &#123;</span><br><span class="line">    width: 80px;</span><br><span class="line">    height: 80px;</span><br><span class="line">    top: -30px;</span><br><span class="line">    left: 450px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-6 &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    top: -50px;</span><br><span class="line">    left: 500px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-7 &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    top: -10px;</span><br><span class="line">    left: 650px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-8 &#123;</span><br><span class="line">    width: 50px;</span><br><span class="line">    height: 50px;</span><br><span class="line">    top: 30px;</span><br><span class="line">    left: 730px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-9 &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    top: 30px;</span><br><span class="line">    left: 750px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-10 &#123;</span><br><span class="line">    width: 150px;</span><br><span class="line">    height: 150px;</span><br><span class="line">    top: 10px;</span><br><span class="line">    left: 800px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-11 &#123;</span><br><span class="line">    width: 150px;</span><br><span class="line">    height: 150px;</span><br><span class="line">    top: -30px;</span><br><span class="line">    left: 850px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-12 &#123;</span><br><span class="line">    width: 250px;</span><br><span class="line">    height: 250px;</span><br><span class="line">    top: -50px;</span><br><span class="line">    left: 900px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-13 &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    top: -40px;</span><br><span class="line">    left: 1000px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.circle-14 &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    top: -70px;</span><br><span class="line">    left: 1100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>JS</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">//流星动画</span><br><span class="line">setInterval(function() &#123;</span><br><span class="line">    const obj = addChild(&quot;#sky&quot;, &quot;div&quot;, 2, &quot;star&quot;);</span><br><span class="line"></span><br><span class="line">    for (let i = 0; i &lt; obj.children.length; i++) &#123;</span><br><span class="line">        const top = -50 + Math.random() * 200 + &quot;px&quot;,</span><br><span class="line">            left = 200 + Math.random() * 1200 + &quot;px&quot;,</span><br><span class="line">            scale = 0.3 + Math.random() * 0.5;</span><br><span class="line">        const timer = 1000 + Math.random() * 1000;</span><br><span class="line"></span><br><span class="line">        obj.children[i].style.top = top;</span><br><span class="line">        obj.children[i].style.left = left;</span><br><span class="line">        obj.children[i].style.transform = `scale($&#123;scale&#125;)`;</span><br><span class="line"></span><br><span class="line">        requestAnimation(&#123;</span><br><span class="line">            ele: obj.children[i],</span><br><span class="line">            attr: [&quot;top&quot;, &quot;left&quot;, &quot;opacity&quot;],</span><br><span class="line">            value: [150, -150, .8],</span><br><span class="line">            time: timer,</span><br><span class="line">            flag: false,</span><br><span class="line">            fn: function() &#123;</span><br><span class="line">                requestAnimation(&#123;</span><br><span class="line">                    ele: obj.children[i],</span><br><span class="line">                    attr: [&quot;top&quot;, &quot;left&quot;, &quot;opacity&quot;],</span><br><span class="line">                    value: [150, -150, 0],</span><br><span class="line">                    time: timer,</span><br><span class="line">                    flag: false,</span><br><span class="line">                    fn: () =&gt; &#123;</span><br><span class="line">                        obj.parent.removeChild(obj.children[i]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;, 1000);</span><br><span class="line"></span><br><span class="line">//闪烁星星动画</span><br><span class="line">setInterval(function() &#123;</span><br><span class="line">    const obj = addChild(&quot;#stars&quot;, &quot;div&quot;, 2, &quot;blink&quot;);</span><br><span class="line"></span><br><span class="line">    for (let i = 0; i &lt; obj.children.length; i++) &#123;</span><br><span class="line">        const top = -50 + Math.random() * 500 + &quot;px&quot;,</span><br><span class="line">            left = 200 + Math.random() * 1200 + &quot;px&quot;,</span><br><span class="line">            round = 1 + Math.random() * 2 + &quot;px&quot;;</span><br><span class="line">        const timer = 1000 + Math.random() * 4000;</span><br><span class="line"></span><br><span class="line">        obj.children[i].style.top = top;</span><br><span class="line">        obj.children[i].style.left = left;</span><br><span class="line">        obj.children[i].style.width = round;</span><br><span class="line">        obj.children[i].style.height = round;</span><br><span class="line"></span><br><span class="line">        requestAnimation(&#123;</span><br><span class="line">            ele: obj.children[i],</span><br><span class="line">            attr: &quot;opacity&quot;,</span><br><span class="line">            value: .5,</span><br><span class="line">            time: timer,</span><br><span class="line">            flag: false,</span><br><span class="line">            fn: function() &#123;</span><br><span class="line">                requestAnimation(&#123;</span><br><span class="line">                    ele: obj.children[i],</span><br><span class="line">                    attr: &quot;opacity&quot;,</span><br><span class="line">                    value: 0,</span><br><span class="line">                    time: timer,</span><br><span class="line">                    flag: false,</span><br><span class="line">                    fn: function() &#123;</span><br><span class="line">                        obj.parent.removeChild(obj.children[i]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;, 1000);</span><br><span class="line"></span><br><span class="line">//月亮移动</span><br><span class="line">requestAnimation(&#123;</span><br><span class="line">    ele: &quot;#moon&quot;,</span><br><span class="line">    attr: &quot;right&quot;,</span><br><span class="line">    value: 1200,</span><br><span class="line">    time: 10000000,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 添加云</span><br><span class="line">const clouds = addChild(&quot;.cloud&quot;, &quot;div&quot;, 14, &quot;circle&quot;, true);</span><br><span class="line">for (let i = 0; i &lt; clouds.children.length; i++) &#123;</span><br><span class="line">    for (let j = 0; j &lt; clouds.children[i].length;) &#123;</span><br><span class="line">        clouds.children[i][j].classList.add(`circle-$&#123;++j&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//云动画</span><br><span class="line"></span><br><span class="line">let flag = 1;</span><br><span class="line">setInterval(</span><br><span class="line">    function() &#123;</span><br><span class="line">        const clouds = document.querySelectorAll(&quot;.cloud&quot;);</span><br><span class="line">        const left = Math.random() * 5;</span><br><span class="line">        bottom = Math.random() * 5;</span><br><span class="line"></span><br><span class="line">        let timer = 0;</span><br><span class="line">        for (let i = 0; i &lt; clouds.length; i++) &#123;</span><br><span class="line">            requestAnimation(&#123;</span><br><span class="line">                ele: clouds[i],</span><br><span class="line">                attr: [&quot;left&quot;, &quot;bottom&quot;],</span><br><span class="line">                value: flag % 2 ? [-left, -bottom] : [left, bottom],</span><br><span class="line">                time: timer += 500,</span><br><span class="line">                flag: false,</span><br><span class="line">                fn: function() &#123;</span><br><span class="line">                    requestAnimation(&#123;</span><br><span class="line">                        ele: clouds[i],</span><br><span class="line">                        attr: [&quot;left&quot;, &quot;bottom&quot;],</span><br><span class="line">                        value: flag % 2 ? [left, bottom] : [-left, -bottom],</span><br><span class="line">                        time: timer,</span><br><span class="line">                        flag: false</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        flag++;</span><br><span class="line">    &#125;, 2000)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>封装方法</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br></pre></td><td class="code"><pre><span class="line">//———————————————————————————————————————————动画———————————————————————————————————————————————————</span><br><span class="line">//运动动画，调用Tween.js</span><br><span class="line">//ele: dom | class | id | tag  节点 | 类名 | id名 | 标签名，只支持选择一个节点，class类名以及标签名只能选择页面中第一个</span><br><span class="line">//attr: attribute 属性名</span><br><span class="line">//value: target value 目标值</span><br><span class="line">//time: duration 持续时间</span><br><span class="line">//tween: timing function 函数方程</span><br><span class="line">//flag: Boolean 判断是按值移动还是按位置移动,默认按位置移动</span><br><span class="line">//fn: callback 回调函数</span><br><span class="line">//增加返回值: 将内部参数对象返回，可以通过设置返回对象的属性stop为true打断动画</span><br><span class="line">function requestAnimation(obj) &#123;</span><br><span class="line">    //—————————————————————————————————————参数设置—————————————————————————————————————————————</span><br><span class="line">    //默认属性</span><br><span class="line">    const parameter = &#123;</span><br><span class="line">        ele: null,</span><br><span class="line">        attr: null,</span><br><span class="line">        value: null,</span><br><span class="line">        time: 1000,</span><br><span class="line">        tween: &quot;linear&quot;,</span><br><span class="line">        flag: true,</span><br><span class="line">        stop: false,</span><br><span class="line">        fn: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //合并传入属性</span><br><span class="line">    Object.assign(parameter, obj); //覆盖重名属性</span><br><span class="line"></span><br><span class="line">    //—————————————————————————————————————动画设置—————————————————————————————————————————————</span><br><span class="line">    //创建运动方程初始参数,方便复用</span><br><span class="line">    let start = 0; //用于保存初始时间戳</span><br><span class="line">    let target = (typeof parameter.ele === &quot;string&quot; ? document.querySelector(parameter.ele) : parameter.ele), //目标节点</span><br><span class="line">        attr = parameter.attr, //目标属性</span><br><span class="line">        beginAttr = parseFloat(getComputedStyle(target)[attr]), //attr起始值</span><br><span class="line">        value = parameter.value, //运动目标值</span><br><span class="line">        count = value - beginAttr, //实际运动值</span><br><span class="line">        time = parameter.time, //运动持续时间,</span><br><span class="line">        tween = parameter.tween, //运动函数</span><br><span class="line">        flag = parameter.flag,</span><br><span class="line">        callback = parameter.fn, //回调函数</span><br><span class="line">        curVal = 0; //运动当前值</span><br><span class="line"></span><br><span class="line">    //判断传入函数是否为数组，多段运动</span><br><span class="line">    (function() &#123;</span><br><span class="line">        if (attr instanceof Array) &#123;</span><br><span class="line">            beginAttr = [];</span><br><span class="line">            count = [];</span><br><span class="line">            for (let i of attr) &#123;</span><br><span class="line">                const val = parseFloat(getComputedStyle(target)[i]);</span><br><span class="line">                beginAttr.push(val);</span><br><span class="line">                count.push(value - val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (value instanceof Array) &#123;</span><br><span class="line">            for (let i in value) &#123;</span><br><span class="line">                count[i] = value[i] - beginAttr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line"></span><br><span class="line">    //运动函数</span><br><span class="line">    function animate(timestamp) &#123;</span><br><span class="line">        if (parameter.stop) return; //打断</span><br><span class="line">        //存储初始时间戳</span><br><span class="line">        if (!start) start = timestamp;</span><br><span class="line">        //已运动时间</span><br><span class="line">        let t = timestamp - start;</span><br><span class="line">        //判断多段运动</span><br><span class="line">        if (beginAttr instanceof Array) &#123;</span><br><span class="line">            // const len = beginAttr.length //存数组长度，复用</span><br><span class="line"></span><br><span class="line">            //多段运动第1类——多属性，同目标，同时间/不同时间</span><br><span class="line">            if (typeof count === &quot;number&quot;) &#123; //同目标</span><br><span class="line">                //同时间</span><br><span class="line">                if (typeof time === &quot;number&quot;) &#123;</span><br><span class="line">                    if (t &gt; time) t = time; //判断是否超出目标值</span><br><span class="line"></span><br><span class="line">                    //循环attr，分别赋值</span><br><span class="line">                    for (let i in beginAttr) &#123;</span><br><span class="line">                        if (flag) curVal = Tween[tween](t, beginAttr[i], count, time); //调用Tween，返回当前属性值,此时计算方法为移动到写入位置</span><br><span class="line">                        else curVal = Tween[tween](t, beginAttr[i], count + beginAttr[i], time); //调用Tween，返回当前属性值，此时计算方法为移动了写入距离</span><br><span class="line">                        if (attr[i] === &quot;opacity&quot;) target.style[attr[i]] = curVal; //给属性赋值</span><br><span class="line">                        else target.style[attr[i]] = curVal + &quot;px&quot;; //给属性赋值</span><br><span class="line"></span><br><span class="line">                        if (t &lt; time) requestAnimationFrame(animate); //判断是否运动完</span><br><span class="line">                        else callback &amp;&amp; callback(); //调用回调函数</span><br><span class="line">                    &#125;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                //不同时间</span><br><span class="line">                if (time instanceof Array) &#123;</span><br><span class="line">                    //循环time，attr，分别赋值</span><br><span class="line">                    for (let i in beginAttr) &#123;</span><br><span class="line">                        //错误判断</span><br><span class="line">                        if (!time[i] &amp;&amp; time[i] !== 0) &#123;</span><br><span class="line">                            throw new Error(</span><br><span class="line">                                &quot;The input time&apos;s length is not equal to attribute&apos;s length&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        //判断是否已经完成动画，完成则跳过此次循环</span><br><span class="line">                        if (parseFloat(getComputedStyle(target)[attr[i]]) === (typeof value === &quot;number&quot; ? value : value[i]))</span><br><span class="line">                            continue;</span><br><span class="line">                        // t = timestamp - start; //每次循环初始化t</span><br><span class="line">                        if (t &gt; time[i]) t = time[i]; //判断是否超出目标值</span><br><span class="line"></span><br><span class="line">                        if (flag || attr[i] === &quot;opacity&quot;) curVal = Tween[tween](t, beginAttr[i], count, i); //调用Tween，返回当前属性值,此时计算方法为移动到写入位置</span><br><span class="line">                        else curVal = Tween[tween](t, beginAttr[i], count + beginAttr[i], i); //调用Tween，返回当前属性值，此时计算方法为移动了写入距离</span><br><span class="line">                        if (attr[i] === &quot;opacity&quot;) target.style[attr[i]] = curVal; //给属性赋值</span><br><span class="line">                        else target.style[attr[i]] = curVal + &quot;px&quot;; //给属性赋值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (t &lt; Math.max(...time)) requestAnimationFrame(animate); //判断函数是否运动完</span><br><span class="line">                    else callback &amp;&amp; callback(); //如果已经执行完时间最长的动画，则调用回调函数</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //多段运动第2类——多属性，不同目标，同时间/不同时间</span><br><span class="line">            if (count instanceof Array) &#123;</span><br><span class="line">                //同时间</span><br><span class="line">                if (typeof time === &quot;number&quot;) &#123;</span><br><span class="line"></span><br><span class="line">                    if (t &gt; time) t = time; //判断是否超出目标值</span><br><span class="line"></span><br><span class="line">                    for (let i in beginAttr) &#123; //循环attr，count，分别赋值</span><br><span class="line">                        //错误判断</span><br><span class="line">                        if (!count[i] &amp;&amp; count[i] !== 0) &#123;</span><br><span class="line">                            throw new Error(</span><br><span class="line">                                &quot;The input value&apos;s length is not equal to attribute&apos;s length&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        if (flag || attr[i] === &quot;opacity&quot;) curVal = Tween[tween](t, beginAttr[i], count[i], time); //调用Tween，返回当前属性值,此时计算方法为移动到写入位置</span><br><span class="line">                        else curVal = Tween[tween](t, beginAttr[i], count[i] + beginAttr[i], time); //调用Tween，返回当前属性值，此时计算方法为移动了写入距离</span><br><span class="line">                        if (attr[i] === &quot;opacity&quot;) target.style[attr[i]] = curVal; //给属性赋值</span><br><span class="line">                        else target.style[attr[i]] = curVal + &quot;px&quot;; //给属性赋值</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (t &lt; time) requestAnimationFrame(animate); //判断函数是否运动完</span><br><span class="line">                    else callback &amp;&amp; callback(); //如果已经执行完时间最长的动画，则调用回调函数</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                //不同时间</span><br><span class="line">                if (time instanceof Array) &#123;</span><br><span class="line">                    for (let i in beginAttr) &#123;</span><br><span class="line">                        //错误判断</span><br><span class="line">                        if (!time[i] &amp;&amp; time[i] !== 0) &#123;</span><br><span class="line">                            throw new Error(</span><br><span class="line">                                &quot;The input time&apos;s length is not equal to attribute&apos;s length&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        //判断是否已经完成动画，完成则跳过此次循环</span><br><span class="line">                        if (parseFloat(getComputedStyle(target)[attr[i]]) === (typeof value === &quot;number&quot; ? value : value[i]))</span><br><span class="line">                            continue;</span><br><span class="line"></span><br><span class="line">                        if (t &gt; time[i]) t = time[i]; //判断是否超出目标值</span><br><span class="line"></span><br><span class="line">                        //错误判断</span><br><span class="line">                        if (!count[i] &amp;&amp; count[i] !== 0) &#123;</span><br><span class="line">                            throw new Error(</span><br><span class="line">                                &quot;The input value&apos;s length is not equal to attribute&apos;s length&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        if (flag || attr[i] === &quot;opacity&quot;) curVal = Tween[tween](t, beginAttr[i], count[i], time[i]); //调用Tween，返回当前属性值,此时计算方法为移动到写入位置</span><br><span class="line">                        else curVal = Tween[tween](t, beginAttr[i], count[i] + beginAttr[i], time[i]); //调用Tween，返回当前属性值，此时计算方法为移动了写入距离</span><br><span class="line">                        if (attr[i] === &quot;opacity&quot;) target.style[attr[i]] = curVal;</span><br><span class="line">                        else target.style[attr[i]] = curVal + &quot;px&quot;;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (t &lt; Math.max(...time)) requestAnimationFrame(animate);</span><br><span class="line">                    else callback &amp;&amp; callback();</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //单运动模式</span><br><span class="line">        if (t &gt; time) t = time;</span><br><span class="line">        if (flag || attr === &quot;opacity&quot;) curVal = Tween[tween](t, beginAttr, count, time); //调用Tween，返回当前属性值,此时计算方法为移动到写入位置</span><br><span class="line">        else curVal = Tween[tween](t, beginAttr[i], count + beginAttr, time); //调用Tween，返回当前属性值，此时计算方法为移动了写入距离</span><br><span class="line">        if (attr === &quot;opacity&quot;) target.style[attr] = curVal;</span><br><span class="line">        else target.style[attr] = curVal + &quot;px&quot;;</span><br><span class="line"></span><br><span class="line">        if (t &lt; time) requestAnimationFrame(animate);</span><br><span class="line">        else callback &amp;&amp; callback();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(animate);</span><br><span class="line">    return parameter; //返回对象，供打断或其他用途</span><br><span class="line">&#125;</span><br><span class="line">//Tween.js</span><br><span class="line">/*</span><br><span class="line"> * t : time 已过时间</span><br><span class="line"> * b : begin 起始值</span><br><span class="line"> * c : count 总的运动值</span><br><span class="line"> * d : duration 持续时间</span><br><span class="line"> *</span><br><span class="line"> * 曲线方程</span><br><span class="line"> *</span><br><span class="line"> * http://www.cnblogs.com/bluedream2009/archive/2010/06/19/1760909.html</span><br><span class="line"> * */</span><br><span class="line"></span><br><span class="line">let Tween = &#123;</span><br><span class="line">    linear: function(t, b, c, d) &#123; //匀速</span><br><span class="line">        return c * t / d + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeIn: function(t, b, c, d) &#123; //加速曲线</span><br><span class="line">        return c * (t /= d) * t + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeOut: function(t, b, c, d) &#123; //减速曲线</span><br><span class="line">        return -c * (t /= d) * (t - 2) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeBoth: function(t, b, c, d) &#123; //加速减速曲线</span><br><span class="line">        if ((t /= d / 2) &lt; 1) &#123;</span><br><span class="line">            return c / 2 * t * t + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return -c / 2 * ((--t) * (t - 2) - 1) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeInStrong: function(t, b, c, d) &#123; //加加速曲线</span><br><span class="line">        return c * (t /= d) * t * t * t + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeOutStrong: function(t, b, c, d) &#123; //减减速曲线</span><br><span class="line">        return -c * ((t = t / d - 1) * t * t * t - 1) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    easeBothStrong: function(t, b, c, d) &#123; //加加速减减速曲线</span><br><span class="line">        if ((t /= d / 2) &lt; 1) &#123;</span><br><span class="line">            return c / 2 * t * t * t * t + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    elasticIn: function(t, b, c, d, a, p) &#123; //正弦衰减曲线（弹动渐入）</span><br><span class="line">        if (t === 0) &#123;</span><br><span class="line">            return b;</span><br><span class="line">        &#125;</span><br><span class="line">        if ((t /= d) == 1) &#123;</span><br><span class="line">            return b + c;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!p) &#123;</span><br><span class="line">            p = d * 0.3;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!a || a &lt; Math.abs(c)) &#123;</span><br><span class="line">            a = c;</span><br><span class="line">            var s = p / 4;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            var s = p / (2 * Math.PI) * Math.asin(c / a);</span><br><span class="line">        &#125;</span><br><span class="line">        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    elasticOut: function(t, b, c, d, a, p) &#123; //正弦增强曲线（弹动渐出）</span><br><span class="line">        if (t === 0) &#123;</span><br><span class="line">            return b;</span><br><span class="line">        &#125;</span><br><span class="line">        if ((t /= d) == 1) &#123;</span><br><span class="line">            return b + c;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!p) &#123;</span><br><span class="line">            p = d * 0.3;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!a || a &lt; Math.abs(c)) &#123;</span><br><span class="line">            a = c;</span><br><span class="line">            var s = p / 4;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            var s = p / (2 * Math.PI) * Math.asin(c / a);</span><br><span class="line">        &#125;</span><br><span class="line">        return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    elasticBoth: function(t, b, c, d, a, p) &#123;</span><br><span class="line">        if (t === 0) &#123;</span><br><span class="line">            return b;</span><br><span class="line">        &#125;</span><br><span class="line">        if ((t /= d / 2) == 2) &#123;</span><br><span class="line">            return b + c;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!p) &#123;</span><br><span class="line">            p = d * (0.3 * 1.5);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!a || a &lt; Math.abs(c)) &#123;</span><br><span class="line">            a = c;</span><br><span class="line">            var s = p / 4;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            var s = p / (2 * Math.PI) * Math.asin(c / a);</span><br><span class="line">        &#125;</span><br><span class="line">        if (t &lt; 1) &#123;</span><br><span class="line">            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) *</span><br><span class="line">                Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return a * Math.pow(2, -10 * (t -= 1)) *</span><br><span class="line">            Math.sin((t * d - s) * (2 * Math.PI) / p) * 0.5 + c + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    backIn: function(t, b, c, d, s) &#123; //回退加速（回退渐入）</span><br><span class="line">        if (typeof s == &apos;undefined&apos;) &#123;</span><br><span class="line">            s = 1.70158;</span><br><span class="line">        &#125;</span><br><span class="line">        return c * (t /= d) * t * ((s + 1) * t - s) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    backOut: function(t, b, c, d, s) &#123;</span><br><span class="line">        if (typeof s == &apos;undefined&apos;) &#123;</span><br><span class="line">            s = 3.70158; //回缩的距离</span><br><span class="line">        &#125;</span><br><span class="line">        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    backBoth: function(t, b, c, d, s) &#123;</span><br><span class="line">        if (typeof s == &apos;undefined&apos;) &#123;</span><br><span class="line">            s = 1.70158;</span><br><span class="line">        &#125;</span><br><span class="line">        if ((t /= d / 2) &lt; 1) &#123;</span><br><span class="line">            return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    bounceIn: function(t, b, c, d) &#123; //弹球减振（弹球渐出）</span><br><span class="line">        return c - Tween[&apos;bounceOut&apos;](d - t, 0, c, d) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    bounceOut: function(t, b, c, d) &#123;</span><br><span class="line">        if ((t /= d) &lt; (1 / 2.75)) &#123;</span><br><span class="line">            return c * (7.5625 * t * t) + b;</span><br><span class="line">        &#125; else if (t &lt; (2 / 2.75)) &#123;</span><br><span class="line">            return c * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75) + b;</span><br><span class="line">        &#125; else if (t &lt; (2.5 / 2.75)) &#123;</span><br><span class="line">            return c * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375) + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375) + b;</span><br><span class="line">    &#125;,</span><br><span class="line">    bounceBoth: function(t, b, c, d) &#123;</span><br><span class="line">        if (t &lt; d / 2) &#123;</span><br><span class="line">            return Tween[&apos;bounceIn&apos;](t * 2, 0, c, d) * 0.5 + b;</span><br><span class="line">        &#125;</span><br><span class="line">        return Tween[&apos;bounceOut&apos;](t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//———————————————————————————————————————————DOM操作———————————————————————————————————————————————————</span><br><span class="line">// 添加节点</span><br><span class="line">// ele: 父节点，支持输入变量，id值，class值，标签值。除变量外，其余值必须为字符串</span><br><span class="line">// node: 添加的标签名，值为字符串</span><br><span class="line">// n: 节点添加个数</span><br><span class="line">// className: 节点绑定的class名，，值为字符串，多个class名用空格隔开</span><br><span class="line">// boolean: 是否选中所有目标父节点。可选参数，不输入则判定为false，则只匹配选中的第一个节点</span><br><span class="line">function addChild(ele, node, n, className, boolean) &#123;</span><br><span class="line">    //获取节点</span><br><span class="line">    let parent = null;</span><br><span class="line"></span><br><span class="line">    if (typeof ele !== &quot;string&quot;) parent = ele;</span><br><span class="line">    else if (ele[0] === &quot;#&quot;) parent = document.getElementById(ele.slice(1));</span><br><span class="line">    else if (ele[0] === &quot;.&quot;) &#123;</span><br><span class="line">        if (boolean === false) parent = document.getElementsByClassName(ele.slice(1))[0];</span><br><span class="line">        else parent = document.getElementsByClassName(ele.slice(1));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (boolean === false) parent = docuemnt.getElementsByTagName(ele)[0];</span><br><span class="line">        else parent = document.getElementsByTagNameNS(ele);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //声明用于存储父节点及子节点的对象</span><br><span class="line">    const obj = &#123;</span><br><span class="line">        &quot;parent&quot;: parent,</span><br><span class="line">        &quot;children&quot;: []</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    //添加节点</span><br><span class="line">    if (boolean) &#123;</span><br><span class="line">        for (let i = 0; i &lt; parent.length; i++) &#123;</span><br><span class="line">            //创建容器碎片</span><br><span class="line">            const fragment = document.createDocumentFragment();</span><br><span class="line">            //保存子节点，用于返回值</span><br><span class="line">            obj.children[i] = [];</span><br><span class="line"></span><br><span class="line">            for (let j = 0; j &lt; n; j++) &#123;</span><br><span class="line">                const target = document.createElement(node);</span><br><span class="line">                target.className = className;</span><br><span class="line">                fragment.appendChild(target);</span><br><span class="line">                //添加子节点到数组，用于返回值</span><br><span class="line">                obj.children[i][j] = target;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            parent[i].appendChild(fragment)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //创建碎片容器</span><br><span class="line">        const fragment = document.createDocumentFragment();</span><br><span class="line"></span><br><span class="line">        for (let i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            const target = document.createElement(node);</span><br><span class="line">            target.className = className;</span><br><span class="line">            fragment.appendChild(target);</span><br><span class="line">            //添加子节点，用于返回值</span><br><span class="line">            obj.children[i] = target;</span><br><span class="line">        &#125;</span><br><span class="line">        //将碎片容器一次性添加到父节点</span><br><span class="line">        parent.appendChild(fragment);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //返回参数，供动画函数调用</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、案例解析"><a href="#3、案例解析" class="headerlink" title="3、案例解析"></a>3、案例解析</h3><ul>
+<li><strong>HTML</strong></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于节点很多，并且我想尽量做得逼真有趣一点，就给节点加了随机位置。所以节点的输出都是用 JS 控制的，HTML 这边只写了几个父元素盒子，加上相应的 id 名和 class 类名，结构相对简单。</p>
+<ul>
+<li><strong>CSS</strong></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSS 部分的难点就是流星的样式和用圈圈画云层，然后将云层堆叠出立体效果。<br><br></p>
+<blockquote>
+<p><strong>首先说一下流星的样式：</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#sky .star &#123;</span><br><span class="line">     position: absolute;</span><br><span class="line">     opacity: 0;</span><br><span class="line">     z-index: 10000;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> .star::after &#123;</span><br><span class="line">     content: &quot;&quot;;</span><br><span class="line">     display: block;</span><br><span class="line">     border: solid;</span><br><span class="line">     border-width: 2px 0 2px 80px;</span><br><span class="line">     /*流星随长度逐渐缩小*/</span><br><span class="line">     border-color: transparent transparent transparent rgba(255, 255, 255, 1);</span><br><span class="line">     border-radius: 2px 0 0 2px;</span><br><span class="line">     transform: rotate(-45deg);</span><br><span class="line">     transform-origin: 0 0 0;</span><br><span class="line">     box-shadow: 0 0 20px rgba(255, 255, 255, .3);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先提取了公共样式，添加定位属性；<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后在 star 后通过 after 伪类添加流星，<strong>用 border 特性画：</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1）模型绘制：</strong> <strong>border-width</strong>的顺序为四边<strong>top、right、bottom、left</strong>，同理<strong>border-color</strong>的顺序也为四边<strong>top、right、bottom、left</strong>。这样将 border-width 与 border-color 一一对应后，就能看出<strong>2px 是流星的宽度，80px 是流星的长度，而 0px 就是流星的尾巴</strong>。这样就形成了一个<strong>头部 2px 宽，尾部 0px，长度 80px 的流星模型</strong>;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2）稍微逼真：</strong> 通过<strong>border-radius</strong>给流星的头部增加个圆角，让它看起来 emmmmmmm 更逼真？最后通过<strong>roteta</strong>旋转一个角度，让它看起来像是往下掉;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>3）增加闪光：</strong> 通过<strong>box-shadow</strong> 给流星增加一点光晕，让它看起来有闪光的效果;<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过以上 3 步，一个流星就画好了。<br><br></p>
+<blockquote>
+<p><strong>然后是画云：</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">因为云的代码比较长，这里就不贴出来了。方法无非是通过一个一个的圆，相互叠加覆盖，完成一个云朵的形状;</span><br><span class="line">完成一个云层之后，copy一个，然后多个云层通过rotate、opacity、left定位等，做出一个渐隐叠加的立体效果;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>JS</strong></li>
+</ul>
+<p><strong><em>JS 部分以流星举例说明</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">setInterval(function() &#123;</span><br><span class="line">    const obj = addChild(&quot;#sky&quot;, &quot;div&quot;, 2, &quot;star&quot;); //插入流星</span><br><span class="line"></span><br><span class="line">    for (let i = 0; i &lt; obj.children.length; i++) &#123;</span><br><span class="line">        //随机位置</span><br><span class="line">        const top = -50 + Math.random() * 200 + &quot;px&quot;,</span><br><span class="line">            left = 200 + Math.random() * 1200 + &quot;px&quot;,</span><br><span class="line">            scale = 0.3 + Math.random() * 0.5;</span><br><span class="line">        const timer = 1000 + Math.random() * 1000;</span><br><span class="line"></span><br><span class="line">        obj.children[i].style.top = top;</span><br><span class="line">        obj.children[i].style.left = left;</span><br><span class="line">        obj.children[i].style.transform = `scale($&#123;scale&#125;)`;</span><br><span class="line"></span><br><span class="line">        //添加动画</span><br><span class="line">        requestAnimation(&#123;</span><br><span class="line">            ele: obj.children[i],</span><br><span class="line">            attr: [&quot;top&quot;, &quot;left&quot;, &quot;opacity&quot;],</span><br><span class="line">            value: [150, -150, .8],</span><br><span class="line">            time: timer,</span><br><span class="line">            flag: false,</span><br><span class="line">            fn: function() &#123;</span><br><span class="line">                requestAnimation(&#123;</span><br><span class="line">                    ele: obj.children[i],</span><br><span class="line">                    attr: [&quot;top&quot;, &quot;left&quot;, &quot;opacity&quot;],</span><br><span class="line">                    value: [150, -150, 0],</span><br><span class="line">                    time: timer,</span><br><span class="line">                    flag: false,</span><br><span class="line">                    fn: () =&gt; &#123;</span><br><span class="line">                        obj.parent.removeChild(obj.children[i]); //动画结束删除节点</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;, 1000);</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里边用到了我自己封装的<strong>两个方法</strong>，一个是基于 requestAnimationFrame 的<strong>requestAnimation</strong>，以及基于 appendChild 的<strong>addChild</strong>。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了达成星星位置随机的效果，通过定时器 setInterval 不停的<strong>插入</strong>与<strong>删除</strong>流星：<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>首先</strong>，每次添加<strong>2 个流星</strong>到页面，但是<strong>定时器的间隔时间小于流星的动画时间</strong>，这样就能保证页面中的流星的数量不是一个固定值，但肯定是大于 2 的。不然一次 2 个流星略显冷清;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>然后</strong>，通过 for 循环（也可以用 for-in，for-of，都行。for-of 最简单）给每个新添加到页面中的流星一个随机的位置（top、left）、随机的大小（scale）、随机的动画执行时间（timer）;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>最后</strong>，在 for 循环中，给每个新添加到页面中的流星加上动画，并通过回调函数在执行完动画后删除节点。这里要注意的是，动画要分成<strong>两个阶段</strong>（<strong>出现</strong>与<strong>消失</strong>，主要是<strong>opacity</strong>控制）。另外我这里的处理，每个流星都移动相同的距离<strong>300px</strong>，这个距离我觉得也可以通过随机数控制，但我犯了个懒，就没有做。</p>
+<h3 id="4、小问题"><a href="#4、小问题" class="headerlink" title="4、小问题"></a>4、小问题</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前我发现的问题有<strong>2 个：</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一是 DOM 操作本身的问题。页面不停的添加与删除节点，造成不停地<strong>回流与重绘</strong>，很耗性能;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二是 requestAnimationFrame 本身的问题。因为定时器不断在添加节点，而 requestAnimationFrame 的特性——<strong>当离开当前页面去浏览其他页面时，动画会暂停</strong>。这就造成了一个问题，<strong>节点一直在加，但动画全停在那没有执行</strong>。那么下次再回到这个页面的时候，就 boom!！！动画就炸了，你会看到画面一卡，很多小蝌蚪集体出动去找妈妈;</p>
+<h3 id="5、结语"><a href="#5、结语" class="headerlink" title="5、结语"></a>5、结语</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个小案例虽然从难度上来看很简单，但是它可拓展性很高——比如表个白啊、寄个相思、耍个浪漫啊等等（手动狗头 doge），而且用纯 CSS 也可以实现（我也写了一版纯 CSS 的，因为不能随机位置随机大小，所以看起来比较静态一点，就不贴了）。所以对于了解 CSS 动画与 JS 动画，是个很不错的练手小案例。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢看完这篇文章的可爱的人儿，希望你能从中获得灵感~如果能给你带来帮助，那我是极高兴地~如果你把灵感告诉我，那我就 can’t happniess anymore 了~<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，再次感谢，如果有优化写法，欢迎指导~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    吕海龙(Lyu Hailoong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.lvhailong.com/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/" title="前端案例分享（一）：CSS+JS实现流星雨动画">https://www.lvhailong.com/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/user.gif" alt="吕海龙(Lyu Hailoong)">
+            
+              <p class="site-author-name" itemprop="name">吕海龙(Lyu Hailoong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LyuHaiLoong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://leetcode.com/lyuhailoong/" target="_blank" title="LeetCode">
+                      
+                        <i class="fa fa-fw fa-bandcamp"></i>LeetCode</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/keepStudying/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-rss"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://codepen.io/HaiLoongLyu/" target="_blank" title="codepen">
+                      
+                        <i class="fa fa-fw fa-codepen"></i>codepen</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、效果图"><span class="nav-number">2.</span> <span class="nav-text">1、效果图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、源码"><span class="nav-number">3.</span> <span class="nav-text">2、源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、案例解析"><span class="nav-number">4.</span> <span class="nav-text">3、案例解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、小问题"><span class="nav-number">5.</span> <span class="nav-text">4、小问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、结语"><span class="nav-number">6.</span> <span class="nav-text">5、结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吕海龙(Lyu Hailoong)</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">5.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问次数
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aX6EUTpchQsWUfpJQiDXHo3K-gzGzoHsz',
+        appKey: 'hmRXEWL6m3SpjdS1Px1RPW0O',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--fork me on github-->
+  <a href="https://github.com/LyuHaiLoong" class="github-corner" aria-label="View source on GitHub"><svg width="100" height="100" viewbox="0 0 250 250" style="fill:#aa0000; color:#fff; position: fixed; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</body>
+</html>

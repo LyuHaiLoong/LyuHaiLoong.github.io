@@ -1,0 +1,26 @@
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Writing database to D:\\web\\hexo\\blog website/db.json","time":"2018-12-25T02:17:34.780Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Hexo version: \u001b[35m3.8.0\u001b[39m","time":"2018-12-25T02:17:34.840Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Working directory: \u001b[35mD:\\web\\hexo\\blog website\\\u001b[39m","time":"2018-12-25T02:17:34.841Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Config loaded: \u001b[35mD:\\web\\hexo\\blog website\\_config.yml\u001b[39m","time":"2018-12-25T02:17:35.020Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2018-12-25T02:17:35.079Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2018-12-25T02:17:35.085Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2018-12-25T02:17:35.088Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2018-12-25T02:17:35.091Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2018-12-25T02:17:35.094Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2018-12-25T02:17:35.100Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-marked\u001b[39m","time":"2018-12-25T02:17:35.110Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2018-12-25T02:17:35.112Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2018-12-25T02:17:35.215Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-wordcount\u001b[39m","time":"2018-12-25T02:17:35.218Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\merge-configs.js\u001b[39m","time":"2018-12-25T02:17:35.230Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\button.js\u001b[39m","time":"2018-12-25T02:17:35.237Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\center-quote.js\u001b[39m","time":"2018-12-25T02:17:35.240Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\exturl.js\u001b[39m","time":"2018-12-25T02:17:35.244Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\full-image.js\u001b[39m","time":"2018-12-25T02:17:35.251Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\label.js\u001b[39m","time":"2018-12-25T02:17:35.254Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\lazy-image.js\u001b[39m","time":"2018-12-25T02:17:35.260Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\note.js\u001b[39m","time":"2018-12-25T02:17:35.262Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\tabs.js\u001b[39m","time":"2018-12-25T02:17:35.271Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\tags\\group-pictures.js\u001b[39m","time":"2018-12-25T02:17:35.274Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Script loaded: \u001b[35mthemes\\next\\scripts\\merge.js\u001b[39m","time":"2018-12-25T02:17:35.279Z","v":0}
+{"name":"hexo","hostname":"LyuHaiLoong","pid":31100,"level":20,"msg":"Database saved","time":"2018-12-25T02:17:35.305Z","v":0}
