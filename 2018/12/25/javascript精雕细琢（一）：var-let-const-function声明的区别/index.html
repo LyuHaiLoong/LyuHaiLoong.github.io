@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.gif?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.gif?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在学习 javascript 的过程中，变量是无时无刻不在使用的。那么相对应的，变量声明方法也如是。变量是由自己决定，但变量声明方法是早已经定义好的。那么在使用变量之前，了解变量声明方法，就变得尤为重要。在 ES6 推出之前，最常用的声明变量方法就是 var。但是由于 var 自身的缺陷，ES6 推出了 let">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript精雕细琢（一）：var let const function声明的区别">
+<meta property="og:url" content="https://www.lvhailong.com/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/index.html">
+<meta property="og:site_name" content="码到成功">
+<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在学习 javascript 的过程中，变量是无时无刻不在使用的。那么相对应的，变量声明方法也如是。变量是由自己决定，但变量声明方法是早已经定义好的。那么在使用变量之前，了解变量声明方法，就变得尤为重要。在 ES6 推出之前，最常用的声明变量方法就是 var。但是由于 var 自身的缺陷，ES6 推出了 let">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-25T03:57:10.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript精雕细琢（一）：var let const function声明的区别">
+<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在学习 javascript 的过程中，变量是无时无刻不在使用的。那么相对应的，变量声明方法也如是。变量是由自己决定，但变量声明方法是早已经定义好的。那么在使用变量之前，了解变量声明方法，就变得尤为重要。在 ES6 推出之前，最常用的声明变量方法就是 var。但是由于 var 自身的缺陷，ES6 推出了 let">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.lvhailong.com/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/">
+
+
+
+
+
+  <title>javascript精雕细琢（一）：var let const function声明的区别 | 码到成功</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">码到成功</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">好的代码需要时间打磨，做人亦如是</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吕海龙(Lyu Hailoong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/user.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码到成功">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">javascript精雕细琢（一）：var let const function声明的区别</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T11:54:21+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-25T11:57:10+08:00">
+                2018-12-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在学习 javascript 的过程中，变量是无时无刻不在使用的。那么相对应的，变量声明方法也如是。变量是由自己决定，但变量声明方法是早已经定义好的。那么在使用变量之前，了解变量声明方法，就变得尤为重要。在 ES6 推出之前，最常用的声明变量方法就是 var。但是由于 var 自身的缺陷，ES6 推出了 let 和 const 替代 var。虽然修正了 var 的缺陷，但不能改变的，是之前已经用 var 写了多少年的项目，这些项目是无法随着 var 的被取代而轻易更改的。所以仍存在着使用 var 的公司和项目，这也使得了解 var、let、const 的区别变得有必要。<br><a id="more"></a></p>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在说明 var 并看代码之前，我们先统一思路，将变量的声明及使用过程分为：<strong>创建 → 初始化 → 赋值 → 修改</strong>四步。</p>
+<blockquote>
+<p><strong>首先，来看 var 的声明及使用：</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">　　/*</span><br><span class="line">   　　预解析，初始化与赋值分离</span><br><span class="line">       var a = undefined // 创建变量a，并初始化为undefined。此时变量已经存在与环境中</span><br><span class="line">   */</span><br><span class="line">        　　</span><br><span class="line">   console.log(a) //undefined</span><br><span class="line"></span><br><span class="line">   var a = 0; //赋值为0</span><br><span class="line">   console.log(a); // 0</span><br><span class="line"></span><br><span class="line">   a = 1; //可以修改变量值</span><br><span class="line">   console.log(a) // 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>以上代码可以看出，var 在它的执行环境中的声明及操作过程为：</p>
+<p><strong>（ 创建 → 初始化 ）→ 赋值 → 修改</strong></p>
+<ol>
+<li>预解析：在环境最顶端，创建变量，并初始化为 undefined—— 变量提升；</li>
+<li>为变量赋值；</li>
+<li>对变量进行操作，可以在后续操作中对变量值进行修改；</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过 console.log 的打印结果，我们可以清晰的认识到一点——var 的初始化与赋值是分离的，而且初始化的过程优先于执行环境中的所有操作。这就是为什么在 var 声明赋值前 console.log 变量，会打印出 undefined，而不是报错的原因。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 声明的初始化先于赋值的现象，就叫做<strong>变量提升</strong>。</p>
+<blockquote>
+<p><strong>然后着重说一下变量提升</strong></p>
+</blockquote>
+<ol>
+<li>if 判断中的变量提升</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">　　/*</span><br><span class="line">   　　预解析</span><br><span class="line">      虽然if判断没有执行，但var的变量提升已经发生，此时执行环境中，已经存在变量a，值为undefined；</span><br><span class="line">   */</span><br><span class="line">        　　</span><br><span class="line">   console.log(a) // undefined，变量提升</span><br><span class="line">        　　</span><br><span class="line">   if (false) &#123;</span><br><span class="line">   　　var a = 1;</span><br><span class="line">       console.log(a) //不执行</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   console.log(a); //undefined，变量未赋值</span><br><span class="line"></span><br><span class="line">   a = 1; //注意，此时因为a的变量提升，未加声明符号的赋值，并没有提升到全局环境中</span><br><span class="line">   console.log(a); // 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">console.log(a); // 报错，因为if中a的变量提升，a = 1的赋值并没有存在与全局中。如果注释掉if判断中的内容，a = 1因为没加变量声明符号，相当于在与全局中声明，那么最后的console.log(a)将打印1</span><br></pre></td></tr></table></figure>
+<p><br><br>2.for循环中的变量提升<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">　　/*</span><br><span class="line">   　　预解析</span><br><span class="line">      虽然if判断没有执行，但var的变量提升已经发生，此时执行环境中，已经存在变量a，值为undefined；</span><br><span class="line">   */</span><br><span class="line">        　　　</span><br><span class="line">   console.log(a) // undefined，变量提升</span><br><span class="line">        　　</span><br><span class="line">   console.log(i); //undefined，变量提升</span><br><span class="line">   for (var i = 0;i &lt; 0;i++) &#123;</span><br><span class="line">   　　var a = 1;</span><br><span class="line">      console.log(a) //未执行</span><br><span class="line">   &#125;</span><br><span class="line">   console.log(i); //1，for中的初始化语句已经执行</span><br><span class="line"></span><br><span class="line">console.log(a); //undefined，变量未赋值</span><br><span class="line"></span><br><span class="line">a = 1;</span><br><span class="line">console.log(a);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line">console.log(a); //报错，变量不存在</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从上边代码中可以看出，<strong>当var声明存在于if和for循环中时，不管赋值有没有执行，创建及初始化的过程都已经提升到了执行环境中</strong>。</p>
+<blockquote>
+<p><strong>最后说明var的一个缺陷：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　 var a = 0;</span><br><span class="line">var a = 1;</span><br><span class="line">var a = 2;</span><br><span class="line">  </span><br><span class="line"> console.log(a); // 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由以上代码可以看出，var声明一个变量后，可以<strong>无限次的以同一个变量名不断的重复 创建→初始化→赋值</strong>，这跟直接修改变量值的结果是一样的。但是实际操作中不会有人通过这种方式操作变量，而且如果项目很大，很难保证不出现给不同变量声明同一个变量名的情况，很容易出现错误。</p>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><blockquote>
+<p><strong>首先，来看var的声明及使用：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">/_</span><br><span class="line">预解析，没有变量提升，啥也没有。创建、初始化与赋值同时进行</span><br><span class="line">_/</span><br><span class="line">  </span><br><span class="line">　 console.log(a); //报错，变量仍未创建</span><br><span class="line"></span><br><span class="line">    let a = 0; // 创建变量a，初始化并赋值为0.不赋值的话，则为undefined;</span><br><span class="line">    console.log(a); // 0</span><br><span class="line"></span><br><span class="line">    a = 2; // 可以修改变量值</span><br><span class="line">    console.log(a); // 2</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>同样，先分析过程：</p>
+<p><strong>（ 创建→初始化→赋值 ）→修改</strong></p>
+<ol>
+<li>预解析，啥也没有；<del>在环境最顶端，创建变量，并初始化为undefined—— 变量提升；</del></li>
+<li>创建变量、初始化并赋值；</li>
+<li>对变量进行操作，可以在后续操作中对变量值进行修改；</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过上方代码，我们可以看出let声明变量时，<strong>（ 创建→初始化→赋值 ）是在一步完成的，不存在变量提升的现象</strong>。所以在let声明前console.log(a)，报错a is not defined，因为此时a还没有被创建。而let初始化前的执行区域就叫做<strong>暂存死区</strong>。</p>
+<blockquote>
+<p><strong>然后，来看let在重复声明时的表现：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　 let a = 1;</span><br><span class="line">let a = 2;</span><br><span class="line">let a = 3;</span><br><span class="line"></span><br><span class="line">console.log(a); // 报错</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上说明了let区别于var的另一个特性——<strong>变量的唯一性</strong>。<strong>同一个变量名，不能在let中重复使用</strong>，所以执行上方代码操作的结果，就是报错<strong>Identifier ‘a’ has already been declared</strong>；</p>
+<blockquote>
+<p><strong>最后，let与var最大的区别——块级作用域</strong></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先说明，<strong>块级作用域</strong>的概念——简单理解，<strong>{}一个大括号就是一个代码块，一个单独的执行环境</strong>。那么它理应不受外部影响（如果不是刻意为之的话，它也不应该影响外部环境）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是在let之前，JS中的变量声明是<strong>没有块级作用域</strong>的属性的。这其中最典型的案例，就是<strong>for循环中的var声明i</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function a() &#123;</span><br><span class="line">　　 for (var i = 1;i &lt; 5;i++) &#123;</span><br><span class="line">　　 console.log(i);</span><br><span class="line">for( var i = 10;i &lt; 20;i++) &#123;</span><br><span class="line">　　 console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">a(); //只执行外部循环一次，因为内部循环由于 var 声明的缘故，执行过后 i 值已经为 11，外部循环判断后，将不再执行</span><br><span class="line"></span><br><span class="line">function testA() &#123;</span><br><span class="line">　　/_</span><br><span class="line">　 预解析</span><br><span class="line">创建 i 并赋值为 undefined</span><br><span class="line">注意，此时实际上是两个 i 的变量提升</span><br><span class="line">_/</span><br><span class="line">console.log(i); // undefined</span><br><span class="line"></span><br><span class="line">var i = 0; // 赋值 i = 0</span><br><span class="line">console.log(i); // 0;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">　　 console.log(i); // 0，访问第一个 i</span><br><span class="line">var i = 10 // 赋值 i = 10，覆盖第一个 i</span><br><span class="line">console.log(i); // 10，访问第二个 i</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(i); // 10，访问第二个 i，i 已经被覆盖</span><br><span class="line">&#125;</span><br><span class="line">testA();</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上代码，通过testA函数，侧面解释了一下a函数中的行为原因。这一行为模式，充分暴露了var声明的缺陷。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>然后再来看let声明中的块级作用域：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function b() &#123;</span><br><span class="line">　　 for (let i = 0;i &lt; 5;i++) &#123;</span><br><span class="line">　　 console.log(i);</span><br><span class="line">for(let i = 10;i &lt; 20;i++) &#123;</span><br><span class="line">　　 console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">b(); //因为块级作用域的存在，两个循环的 i 互不影响，所有循环次数都会被执行。实际使用时，建议还是不要都用同一变量名</span><br><span class="line"></span><br><span class="line">function testB() &#123; 　　</span><br><span class="line">/_预解析啥也没有 _/</span><br><span class="line">console.log(i); // 报错，暂存死区</span><br><span class="line"></span><br><span class="line">let i = 0;</span><br><span class="line">// 赋值 i = 0</span><br><span class="line">console.log(i); // 0;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">console.log(i); // 报错，暂存死区，因为块中又声明了变量 i。如果块中没有 let i 的话，则按作用域链向上查找，打印外部 i 值 0</span><br><span class="line">let i = 10 // 赋值 i = 10，不覆盖第一个 i</span><br><span class="line">console.log(i); // 10，访问第二个 i</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(i); // 0，访问第一个 i，两个 i 相互不影响  </span><br><span class="line">&#125;</span><br><span class="line">testB();</span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上代码，通过testB函数，侧面解释了一下b函数中的行为原因。这一行为模式，体现了let生命中块级作用域的存在，并暴露出了let与var的最大区别。</p>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　　/_</span><br><span class="line">　　预解析啥也没有，创建、初始化与赋值同时进行</span><br><span class="line">_/</span><br><span class="line">console.log(a); // 报错，变量仍未创建</span><br><span class="line"></span><br><span class="line">const a = &#123;</span><br><span class="line">　　 name: &quot;Lyu&quot; // 创建对象 a，并赋值为一个对象地址</span><br><span class="line">&#125;</span><br><span class="line">console.log(a); //&#123;name: &quot;Lyu&quot;&#125;</span><br><span class="line">console.log(a.name); // Lyu</span><br><span class="line"></span><br><span class="line">a = 1; //报错，常量值不可修改</span><br><span class="line"></span><br><span class="line">a.name = &quot;Jack&quot;;</span><br><span class="line">　　 console.log(a); // &#123;name: &quot;Jack&quot;&#125;</span><br><span class="line">console.log(a.name); // Jack</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>分析过程：</p>
+<p><strong>（ 创建→初始化→赋值 ）→修改</strong></p>
+<ol>
+<li>预解析，啥也没有；<del>预解析在环境最顶端，创建变量，并初始化为undefined—— 变量提升；</del></li>
+<li>创建变量、初始化并赋值。必须赋值，不赋值会报错；</li>
+<li>对变量进行操作，可以在后续操作中对变量值进行修改，不可以对变量进行修改，但是可以对变量的属性进行修改；</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了说明const的特性，<strong>特意声明了一个对象</strong>。在理解了var和let的过程之后，再来看const的整个过程，会发现<strong>在（ 创建→初始化→赋值 ）的过程中，const和let是没有区别的</strong>。唯一的区别在于<strong>→修改</strong>。如果执行了上方的代码，在<strong>a = 1</strong>那步会报错<strong>Assignment to constant variable</strong>。其中的constant就是const的英文全拼，它的意思的<strong>不变的、恒定的、恒量</strong>。那么从字面上就能理解，通过const声明的变量，<strong>是一个恒定值，即无法更改的值</strong>。所以当通过<strong>a = 1</strong>试图修改a的值时，报错。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然<strong>a本身的值</strong>无法修改，但是a为对象，值为地址，所以<strong>a的属性是可以修改的</strong>。从代码最后一步可以看出。a.name的值成功修改为”Jack”。这就是const 的第二个特性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同let一样的，const的第三个特性也是<strong>变量的唯一性</strong>，不再过多阐述。</p>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><blockquote>
+<p><strong>首先，来看function的声明及使用：</strong>　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/_</span><br><span class="line">　　 funtcion test() &#123;...&#125;</span><br><span class="line">预解析，创建、初始化、赋值三位一体</span><br><span class="line">此时函数已经完成变量声明的所有操作，在执行环境的任何位置都可以调用函数  </span><br><span class="line">_/</span><br><span class="line"></span><br><span class="line">test(); //调用函数，只要函数确实存在并可用，那么在执行环境任何位置都可以调用</span><br><span class="line"></span><br><span class="line">function test() &#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>分析过程：</p>
+<p><strong>（ 创建→初始化→赋值 ）→执行/修改</strong></p>
+<ol>
+<li>预解析，在环境最顶端，创建函数，初始化并赋值为函数定义；</li>
+<li>执行函数，无论函数在何位置，只要可用，就可以调用；</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function是专门用于函数声明的方法，由于函数的复杂性，以及利用性。function声明的函数，会在整个环境变量最顶端完成<strong>创建、初始化、赋值三位一体</strong>的操作。这样一来，不管在何处声明了函数，可以在任何地方调用函数方法。这是比较合乎常理的性质。</p>
+<blockquote>
+<p><strong>然后，function同var一样，同样存在变量声明的特性：</strong></p>
+</blockquote>
+<ol>
+<li>if判断中的变量提升<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　　/_</span><br><span class="line">　　预解析</span><br><span class="line">　　虽然 if 判断没有执行，但 function 的变量提升已经发生，此时执行环境中，已经存在变量 a，值为 undefined；</span><br><span class="line">_/</span><br><span class="line">　　</span><br><span class="line">console.log(a) // undefined，变量提升</span><br><span class="line">　　</span><br><span class="line">if (false) &#123;</span><br><span class="line">　　 function a()&#123;&#125;; // 变量提升</span><br><span class="line">console.log(a) //不执行</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(a); //undefined，变量未赋值</span><br><span class="line"></span><br><span class="line">a = 1; //注意，此时因为 a 的变量提升，未加声明符号的赋值，并没有提升到全局环境中</span><br><span class="line">console.log(a); // 1  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line"></span><br><span class="line">console.log(a); // 报错，因为 if 中 a 的变量提升，a = 1 的赋值并没有存在与全局中。如果注释掉 if 判断中的内容，a = 1 因为没加变量声明符号，相当于在与全局中声明，那么最后的 console.log(a)将打印 1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><br></p>
+<ol start="2">
+<li>for循环中的变量提升<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　　/_</span><br><span class="line">　　预解析</span><br><span class="line">虽然 if 判断没有执行，但 function 的变量提升已经发生，此时执行环境中，已经存在变量 a，值为 undefined；</span><br><span class="line">_/</span><br><span class="line">　　　</span><br><span class="line">console.log(a) // undefined，变量提升</span><br><span class="line">　　</span><br><span class="line">console.log(i); //报错，暂存死区</span><br><span class="line">for (let i = 0;i &lt; 0;i++) &#123;</span><br><span class="line">　　 function a() &#123;&#125;; //变量提升</span><br><span class="line">console.log(a) //未执行</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); //报错，let 不存在变量提升</span><br><span class="line"></span><br><span class="line">console.log(a); //undefined，变量未赋值</span><br><span class="line"></span><br><span class="line">a = 1;</span><br><span class="line">console.log(a);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line">console.log(a); //报错，变量不存在</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><strong>最后，function同var一样，它也可以对同一变量重复声明，而且后边的函数定义会覆盖前边的函数定义：</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">test(); // 2</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　　 console.log(1);　　</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">　　 console.log(2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结果打印2，说明前边声明的函数方法被后边所覆盖。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>综上所述，可以总结为如下几点：</p>
+<p>1.var与let、const的区别在于<strong>变量提升</strong>，以及<strong>变量的唯一性</strong>；<br>2.const与let的区别，<strong>除了变量值不能修改，其他性质一样</strong>；<br>3.function由于其自身的需要，<strong>创建→初始化→赋值三位一体</strong>，在环境最顶端完成；也正因为这种性质，<strong>函数声明的函数可以在任何位置被调用</strong>；<br>4.如果可以，尽量<strong>使用let、const代替var</strong>；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文仅仅简单罗列了在函数声明及操作方面，var、let、const、function的区别，意在为初学者理清概念偏差，少走弯路，并通过理解学习，早日跨入JS门槛。</p>
+<p><strong>以上，如有错误或是纰漏，欢迎批评指正~</strong><br><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    吕海龙(Lyu Hailoong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.lvhailong.com/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/" title="javascript精雕细琢（一）：var let const function声明的区别">https://www.lvhailong.com/2018/12/25/javascript精雕细琢（一）：var-let-const-function声明的区别/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/前端案例分享（一）：CSS-JS实现流星雨动画/" rel="next" title="前端案例分享（一）：CSS+JS实现流星雨动画">
+                <i class="fa fa-chevron-left"></i> 前端案例分享（一）：CSS+JS实现流星雨动画
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/user.gif" alt="吕海龙(Lyu Hailoong)">
+            
+              <p class="site-author-name" itemprop="name">吕海龙(Lyu Hailoong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LyuHaiLoong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://leetcode.com/lyuhailoong/" target="_blank" title="LeetCode">
+                      
+                        <i class="fa fa-fw fa-bandcamp"></i>LeetCode</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/keepStudying/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-rss"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://codepen.io/HaiLoongLyu/" target="_blank" title="codepen">
+                      
+                        <i class="fa fa-fw fa-codepen"></i>codepen</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">2.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">3.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">4.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">5.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吕海龙(Lyu Hailoong)</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">8.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问次数
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aX6EUTpchQsWUfpJQiDXHo3K-gzGzoHsz',
+        appKey: 'hmRXEWL6m3SpjdS1Px1RPW0O',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--fork me on github-->
+  <a href="https://github.com/LyuHaiLoong" class="github-corner" aria-label="View source on GitHub"><svg width="100" height="100" viewbox="0 0 250 250" style="fill:#aa0000; color:#fff; position: fixed; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+</body>
+</html>
