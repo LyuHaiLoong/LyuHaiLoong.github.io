@@ -1830,7 +1830,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #50ac05;
+  background: #d94271;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3018,4 +3018,9 @@ body {
 }
 .page-pv {
   display: initial;
+}
+.btn:hover {
+  background: #a00;
+  border-color: #a00;
+  color: #fff;
 }
