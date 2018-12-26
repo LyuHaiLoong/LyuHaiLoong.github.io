@@ -346,7 +346,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/前端案例分享（一）：CSS-JS实现流星雨动画/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/前端案例分享（一）：CSS-JS实现流星雨动画/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/前端案例分享（一）：CSS-JS实现流星雨动画/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -545,11 +545,7 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
     </div>
-
   
 
   <div id="gitalk-container"></div>
@@ -909,45 +905,30 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'LyuHaiLoong',
-            repo: 'https://github.com/LyuHaiLoong/Gitment.git',
-            
-            lang: "default" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'd956cd9410a81e37c6816b0d2ad05995aa32fc46',
-            
-                client_id: '5725ec2e5dc844d36a56'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'aX6EUTpchQsWUfpJQiDXHo3K-gzGzoHsz',
+        appKey: 'hmRXEWL6m3SpjdS1Px1RPW0O',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
