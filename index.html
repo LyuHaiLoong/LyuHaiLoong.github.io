@@ -247,6 +247,227 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吕海龙(Lyu Hailoong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/user.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码到成功">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/javascript精雕细琢（三）：作用域与作用域链/" itemprop="url">javascript精雕细琢（三）：作用域与作用域链</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-01T22:01:21+08:00">
+                2019-01-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T22:11:50+08:00">
+                2019-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/javascript精雕细琢（三）：作用域与作用域链/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/javascript精雕细琢（三）：作用域与作用域链/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件理所应当的事情。而且它其实也并没有理解上那么简单。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文对作用域及作用域链的说明，可能并不全面。笔者尽量以自身开发过程中的理解，做到表述全面。</p>
+<h3 id="1、执行环境"><a href="#1、执行环境" class="headerlink" title="1、执行环境"></a>1、执行环境</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按照《JavaScript 高级程序设计》第 3 版中的定义——<strong>执行环境</strong>定义了变量或函数有权访问其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的<strong>变量对象</strong>，环境中定义的所有变量和函数都保存在这个对象中。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于环境的简单理解，可以理解为<strong>{}一个大括号就是一个执行环境</strong>。如<strong>{ {} }，就是包含关系的两个执行环境</strong>。而由于所有的函数和变量，最终都是通过最外围有对应的调用，才能最终实现运行，所以将<strong>最外围的执行环境</strong>定义为<strong>全局执行环境</strong>，在宿主为 web 浏览器时，全局执行环境就为<strong>window 对象</strong>。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个函数都有自己的执行环境。当执行程序进入一个函数时，函数的环境就会被推入一个<strong>环境栈</strong>中。而在函数执行之后，栈将环境弹出，把控制权返回给之前的执行环境。之后，该环境因为<strong>执行完毕</strong>，随即被<strong>销毁</strong>。但有一个例外，<strong>全局环境将永远不会被销毁，直到程序被关闭，如关闭浏览器。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br></p>
+<p>由上图我们清晰的看到 JavaScript 的两个阶段的执行流程。</p>
+<h3 id="2、作用域与作用域链"><a href="#2、作用域与作用域链" class="headerlink" title="2、作用域与作用域链"></a>2、作用域与作用域链</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域链和作用域是一个包含关系。当代码在一个环境中执行时，会创建变量对象的一个作用域链。而作用域链中，包含的就是一个个有序排列的作用域。作用域链的作用，就是<strong>保证执行环境中的变量和函数的有序访问</strong>。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每次的变量或函数声明，都会形成一个<strong>标识符（即变量名或函数名）。</strong> 作用域链中的向上查找，实际上就是标识符的查找。找到匹配的标识符，就调用它的值。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域链中包含的每个作用域对象，其中都包含着它自身环境中可访问的变量或函数（script 作用域中，为全部的变量和函数;函数作用域中，子函数调用父函数环境中的变量或函数会形成闭包，那么可访问变量就为闭包调用的变量）。换一种角度理解的话，这些环境中可访问的变量或函数就是标识符，是当前作用域中可通过作用域链向上查找的标识符。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一大段的文字不光读起来枯燥，理解起来也困难。所以，stop talking，show code。<br></p>
+<hr>
+<p><strong>以函数为例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    let a = 1; //注释此行，保留其他a，c()打印2，并且作用域链失去闭包对象</span><br><span class="line">    let b = 0;</span><br><span class="line"></span><br><span class="line">    return () =&gt; &#123; //形成闭包环境</span><br><span class="line">        console.log(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let a = 2; //注释此行及test中的a，c()打印3</span><br><span class="line">    window.a = 3;  //注释全部a，报错</span><br><span class="line"></span><br><span class="line">    const c = test();</span><br><span class="line">    c();</span><br><span class="line"></span><br><span class="line">    console.dir(test);</span><br><span class="line">    console.dir(c);</span><br></pre></td></tr></table></figure>
+<p><br><br>以上代码，通过<strong>3次注释</strong>以及<strong>chrome浏览器打印</strong>，可以清晰的看到作用域与作用域链的形成及作用域链<strong>按顺序查找</strong>的特性</p>
+<p><strong>1）首先是闭包调用——所有 a 都不注释</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-66059d6748cb764f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>由上图可以看出，此时作用域链中存在<strong>3 个作用域对象。</strong> 按索引顺序为<strong>0—Closure 闭包环境、1—Script 标签环境、2—Global 全局环境</strong>;<br><br><strong>索引顺序就是标识符的查找顺序</strong>，所以当执行函数 c()时，先在 Closure 闭包环境中查找，然后是 Script 标签作用域，最后是 Global 全局作用域。<strong>因为形成了闭包，那么标识符的查找肯定能在闭包环境中找到对应结果，所以打印 1</strong>;<br><br>值得注意的一点是，Closure 与 Script 作用域对象中，存储的标识符的不同。<strong>closure 只存储调用值 a = 1，并没有存储 b = 0</strong>。而<strong>Script 中将环境中的所有标识符都存在了对象中</strong>;<br><br><br></p>
+<p><strong>2）然后是取消闭包调用，改为 Script 标签作用域查找——注释 test 中的 a = 1</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-b1dc7ed3dfa4b8df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>由上图可以看出，此时作用域链中的 Closure 闭包作用域消失，只剩下 2 个对象 0—Script 标签环境、2—Global 全局环境;<br><br>那么同样按索引顺序查找，找到了 Script 标签环境中的 a = 2，没有继续寻找 Global 全局环境中的 window.a = 3，最终打印 2;<br><br><br></p>
+<p><strong>3）最后是 Global 全局作用域查找——注释 test 中的 a = 1 及 script 中的 a = 2</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-c9fa725c556b8216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>与 2）中情况对比，作用域链中的对象没有改变。但是 Script 对象中的标识符，随着 a = 2 被注释而消失<br><br>按索引顺序查找，找到了 Script 标签环境中没有 a，继续寻找 Global 全局环境，最终找到 window.a = 3，打印 3;<br><br><br><br>函数 test 的打印，从始至终都是 Script 标签作用域及 Global 全局作用域。理解了 c 函数的作用域链，自然就明白了函数 test 的，所以不再展开赘述。<br><br><br></p>
+<p><strong>如有错误或阐述不充分之处，欢迎指正~</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -294,12 +515,45 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-12-28T20:25:32+08:00">
-                2018-12-28
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T22:07:30+08:00">
+                2019-01-01
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1091,7 +1345,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1179,7 +1433,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1193,7 +1447,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.4k</span>
+    <span title="Site words total count">14k</span>
   
 </div>
 
