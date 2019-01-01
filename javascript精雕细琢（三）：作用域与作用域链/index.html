@@ -86,22 +86,22 @@
 
 
 
-<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件">
+<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript精雕细琢（三）：作用域与作用域链">
 <meta property="og:url" content="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/index.html">
 <meta property="og:site_name" content="码到成功">
-<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件">
+<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-66059d6748cb764f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-b1dc7ed3dfa4b8df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-c9fa725c556b8216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-01T14:11:50.428Z">
+<meta property="og:updated_time" content="2019-01-01T14:15:50.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript精雕细琢（三）：作用域与作用域链">
-<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件">
+<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -300,7 +300,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T22:11:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T22:15:50+08:00">
                 2019-01-01
               </time>
             
@@ -413,7 +413,9 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件理所应当的事情。而且它其实也并没有理解上那么简单。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文对作用域及作用域链的说明，可能并不全面。笔者尽量以自身开发过程中的理解，做到表述全面。</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。<br><br></p>
+<a id="more"></a>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件理所应当的事情。而且它其实也并没有理解上那么简单。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文对作用域及作用域链的说明，可能并不全面。笔者尽量以自身开发过程中的理解，做到表述全面。</p>
 <h3 id="1、执行环境"><a href="#1、执行环境" class="headerlink" title="1、执行环境"></a>1、执行环境</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按照《JavaScript 高级程序设计》第 3 版中的定义——<strong>执行环境</strong>定义了变量或函数有权访问其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的<strong>变量对象</strong>，环境中定义的所有变量和函数都保存在这个对象中。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于环境的简单理解，可以理解为<strong>{}一个大括号就是一个执行环境</strong>。如<strong>{ {} }，就是包含关系的两个执行环境</strong>。而由于所有的函数和变量，最终都是通过最外围有对应的调用，才能最终实现运行，所以将<strong>最外围的执行环境</strong>定义为<strong>全局执行环境</strong>，在宿主为 web 浏览器时，全局执行环境就为<strong>window 对象</strong>。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个函数都有自己的执行环境。当执行程序进入一个函数时，函数的环境就会被推入一个<strong>环境栈</strong>中。而在函数执行之后，栈将环境弹出，把控制权返回给之前的执行环境。之后，该环境因为<strong>执行完毕</strong>，随即被<strong>销毁</strong>。但有一个例外，<strong>全局环境将永远不会被销毁，直到程序被关闭，如关闭浏览器。</strong></p>
