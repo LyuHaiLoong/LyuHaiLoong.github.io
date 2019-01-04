@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JS,">
+  <meta name="keywords" content="JS,算法,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;对于接触 JS 时间不长的前端来说，刚开始要实现诸如轮播图，选项卡等小模块时，肯定会用到 index 索引来实现。而这其中很大一部分又会使用++（自加）、–（自减），所以清楚的知道++（自加）、–（自减）的计算模式，可以在运用时减少错误。本文将从数学运算、变量引用、数据转换 3 个方面，对++（自加）、–（自减">
-<meta name="keywords" content="JS">
+<meta name="description" content="[toc] 反转整数题目给定一个 32 位有符号整数，将整数中的数字进行反转。 示例 1:     输入: 123     输出: 321 示例 2:     输入: -123   　输出: -321 示例 3:     输入: 120     输出: 21 注意:     假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。根据这个假设，如果反转后的整">
+<meta name="keywords" content="JS,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript精雕细琢（二）：++、--那点事">
-<meta property="og:url" content="https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/index.html">
+<meta property="og:title" content="LeetCode龟速前进7：反转整数">
+<meta property="og:url" content="https://www.lvhailong.com/LeetCode龟速前进7：反转整数/index.html">
 <meta property="og:site_name" content="码到成功">
-<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;对于接触 JS 时间不长的前端来说，刚开始要实现诸如轮播图，选项卡等小模块时，肯定会用到 index 索引来实现。而这其中很大一部分又会使用++（自加）、–（自减），所以清楚的知道++（自加）、–（自减）的计算模式，可以在运用时减少错误。本文将从数学运算、变量引用、数据转换 3 个方面，对++（自加）、–（自减">
+<meta property="og:description" content="[toc] 反转整数题目给定一个 32 位有符号整数，将整数中的数字进行反转。 示例 1:     输入: 123     输出: 321 示例 2:     输入: -123   　输出: -321 示例 3:     输入: 120     输出: 21 注意:     假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。根据这个假设，如果反转后的整">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-01T14:07:30.908Z">
+<meta property="og:updated_time" content="2019-01-04T15:54:41.401Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript精雕细琢（二）：++、--那点事">
-<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;对于接触 JS 时间不长的前端来说，刚开始要实现诸如轮播图，选项卡等小模块时，肯定会用到 index 索引来实现。而这其中很大一部分又会使用++（自加）、–（自减），所以清楚的知道++（自加）、–（自减）的计算模式，可以在运用时减少错误。本文将从数学运算、变量引用、数据转换 3 个方面，对++（自加）、–（自减">
+<meta name="twitter:title" content="LeetCode龟速前进7：反转整数">
+<meta name="twitter:description" content="[toc] 反转整数题目给定一个 32 位有符号整数，将整数中的数字进行反转。 示例 1:     输入: 123     输出: 321 示例 2:     输入: -123   　输出: -321 示例 3:     输入: 120     输出: 21 注意:     假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。根据这个假设，如果反转后的整">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/">
+  <link rel="canonical" href="https://www.lvhailong.com/LeetCode龟速前进7：反转整数/">
 
 
 
 
 
-  <title>javascript精雕细琢（二）：++、--那点事 | 码到成功</title>
+  <title>LeetCode龟速前进7：反转整数 | 码到成功</title>
   
 
 
@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/">
+    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/LeetCode龟速前进7：反转整数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="吕海龙(Lyu Hailoong)">
@@ -267,7 +267,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">javascript精雕细琢（二）：++、--那点事</h2>
+          <h2 class="post-title" itemprop="name headline">LeetCode龟速前进7：反转整数</h2>
         
 
         <div class="post-meta">
@@ -279,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T20:23:52+08:00">
-                2018-12-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T23:53:00+08:00">
+                2019-01-04
               </time>
             
 
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T22:07:30+08:00">
-                2019-01-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T23:54:41+08:00">
+                2019-01-04
               </time>
             
           </span>
@@ -314,19 +314,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -343,8 +332,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/javascript精雕细琢（二）：-、-那点事/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/javascript精雕细琢（二）：-、-那点事/" itemprop="commentCount"></span>
+                <a href="/LeetCode龟速前进7：反转整数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/LeetCode龟速前进7：反转整数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  867
+                  1.2k
                 </span>
               
 
@@ -387,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3min
+                  5min
                 </span>
               
             </div>
@@ -408,22 +397,32 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于接触 JS 时间不长的前端来说，刚开始要实现诸如轮播图，选项卡等小模块时，肯定会用到 index 索引来实现。而这其中很大一部分又会使用++（自加）、–（自减），所以清楚的知道++（自加）、–（自减）的计算模式，可以在运用时减少错误。本文将从数学运算、变量引用、数据转换 3 个方面，对++（自加）、–（自减）进行一个详细的说明，力求达到一个在通读全文后，明确++（自加）、–（自减）应用方式的效果。<br><a id="more"></a></p>
-<h3 id="和–在数学运算中的计算规则"><a href="#和–在数学运算中的计算规则" class="headerlink" title="++和–在数学运算中的计算规则"></a>++和–在数学运算中的计算规则</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;老规矩，先上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let a = 1,</span><br><span class="line">    b = 1;</span><br><span class="line">let num1 = a++ + b++, //num1执行前a=1,b=1，num1执行后a=2,b=2</span><br><span class="line">    num2 = a++ + ++b, //num2执行前a=2,b=2，num2执行完后a=3,b=3</span><br><span class="line">    num3 = ++a + b++, //num3执行前a=3,b=3，num3执行完后a=4,b=4</span><br><span class="line">    num4 = ++a + ++b; //num4执行前a=4,b=4，num4执行完后a=5,b=5</span><br><span class="line">console.log(num1);    //结果为2，步骤分解: a + b（1 + 1）=&gt; a++(2) =&gt; b++(2) =&gt; a=2,b=2;</span><br><span class="line">console.log(num2);　　//结果为5，步骤分解: a + (++b)（2 + 3） =&gt; a++(3) =&gt; a=3,b=3;</span><br><span class="line">console.log(num3);　　//结果为7，步骤分解: (++a) + b（4 + 3） =&gt; b++(4) =&gt; a=4,b=4;</span><br><span class="line">console.log(num4);　　//结果为10，步骤分解: (++a) + (++b)（5 + 5） =&gt; a=5,b=5;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过以上代码，可以总结出++和–在数学运算出的计算规则如下（加减乘除没区别）：</p>
-<ol>
-<li>当<strong>++、–写在变量前</strong>时，数学计算时，引用的是<strong>++、–未执行</strong>的变量值；</li>
-<li>当<strong>++、–写在变量后</strong>时，数学计算时，引用的是<strong>++、–执行后</strong>的变量值；</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过以上的理解，就不难看出，<strong>num1</strong>得到的求和结果实际上就是 a + b，而<strong>num2</strong>实际上是 a + (++b)，<strong>num3</strong>是(++a) + b，<strong>num4</strong>是(++a) + (++b)，但是求和归求和，++、–只是没在求和结果中执行，实际上变量的++、–都是执行了的，这一点要明确。</p>
-<h3 id="和–在变量引用时的计算规则"><a href="#和–在变量引用时的计算规则" class="headerlink" title="++和–在变量引用时的计算规则"></a>++和–在变量引用时的计算规则</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let num1 = 0,</span><br><span class="line">    num2 = 0;</span><br><span class="line">let arr = [0, 1, 2, 3, 4, 5, 6];</span><br><span class="line">console.log(arr[num1++]); // 0  num1=1</span><br><span class="line">console.log(arr[++num2])  // 1  num2=1</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过以上代码，不难看出，当在变量引用时执行++、–，与数学运算有相似的规律。总结起来就是一句话——<strong>++、–在变量前，引用++、–执行后的变量值；++、–在变量后，引用当前变量值（即执行++、–前的值）</strong>。</p>
-<h3 id="和–的数据转换应用"><a href="#和–的数据转换应用" class="headerlink" title="++和–的数据转换应用"></a>++和–的数据转换应用</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let a = true;</span><br><span class="line">let b = false;</span><br><span class="line">let c = &quot;a&quot;;</span><br><span class="line">console.log(++a); //2</span><br><span class="line">console.log(b++); //0</span><br><span class="line">console.log(c++); //NaN</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总结——对非 Number 类型的数据，应用++、–，相当于执行了 Number()方法。如果转换后是 number 类型，则按上边的规则执行++和–，如果转换后不是 number 类型，则不执行++和–。输出 NaN。不能直接进行类似++true 的操作，必须通过声明变量值为 true 或 false，然后再++、–。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;越是简单常用的技巧，可能越容易被人忘记它的其他方面。保持一颗蓝翔毕业的心，挖掘所有东西~<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文同时发布于我的博客园<a href="https://www.cnblogs.com/keepStudying/p/9743457.html" target="_blank" rel="noopener">https://www.cnblogs.com/keepStudying/p/9743457.html</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转载请注明出处</p>
+        <p>[toc]</p>
+<h1 id="反转整数"><a href="#反转整数" class="headerlink" title="反转整数"></a>反转整数</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><pre><code>给定一个 32 位有符号整数，将整数中的数字进行反转。
+示例 1:
+    输入: 123
+    输出: 321
+示例 2:
+    输入: -123
+  　输出: -321
+示例 3:
+    输入: 120
+    输出: 21
+注意:
+    假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0。
+</code></pre><hr>
+<a id="more"></a>
+<h3 id="解题笔记"><a href="#解题笔记" class="headerlink" title="解题笔记"></a>解题笔记</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这道题用了多长时间我已经忘了，因为试了很多种方法和不同写法，但实际在用时上，差距都没有实质上的飞跃，<strong>最快能到 84ms，最慢也不过在 120ms 前后</strong>。所以这道题我着重对各种方法进行了理解，而对于性能上并没有太多的关注。</p>
+<h5 id="1）数组方法"><a href="#1）数组方法" class="headerlink" title="1）数组方法"></a>1）数组方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    let arrX = x.toString().split(&quot;&quot;),</span><br><span class="line">    newX = arrX.reverse().join(&quot;&quot;);</span><br><span class="line">    return newX[newX.length - 1] === &quot;-&quot; ? Number(&quot;-&quot; + parseInt(newX)) &gt;= Math.pow(-2, 31) &amp;&amp; Number(&quot;-&quot; + parseInt(newX)) &lt;= Math.pow(2, 31) ? Number(&quot;-&quot; + parseInt(newX)) : 0 : Number(newX) &gt;= Math.pow(-2, 31) &amp;&amp; Number(newX) &lt;= Math.pow(2, 31) ? Number(newX) : 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种方法是我最先想到的方法了，将数字转换成字符串，再通过 split()将字符串分割成数组，然后用数组的 reverse()倒排序，再将 reverse()后的数组 join()成字符串，最后判断翻转后的数组最后一位是不是负号(-)，再判断是不是在规定范围内，返回结果。<br>最先想到的往往也最悲催就是了……</p>
+<h5 id="2）数组方法·改"><a href="#2）数组方法·改" class="headerlink" title="2）数组方法·改"></a>2）数组方法·改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    let min = Math.pow(-2, 31),</span><br><span class="line">    max = Math.pow(2, 31) - 1;</span><br><span class="line">    let str = Math.abs(x).toString().split(&quot;&quot;).reverse().join(&quot;&quot;);</span><br><span class="line">    let result = x &gt; 0 ? +str : -str;</span><br><span class="line">    return result &gt;= min &amp;&amp; result &lt;= max ? result : 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;核心方法还是 split()、reverse()、join()。改进在于，通过 Math.abs()直接取绝对值，单纯对数字进行反转操作，然后通过判断参数 x 本来的正负号，再给反转后的数字添加正负号，最后判断是否在规定范围内，返回结果。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在原数组方法的基础上，避免了正负号对反转操作的影响，并且通过判断参数的正负号更直接。</p>
+<h5 id="3）官方提示算法"><a href="#3）官方提示算法" class="headerlink" title="3）官方提示算法"></a>3）官方提示算法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    let min = Math.pow(-2, 31);</span><br><span class="line">    let max = Math.pow(2, 31) - 1;</span><br><span class="line">    let newX = Math.abs(x);</span><br><span class="line">    let len = newX.toString().length;</span><br><span class="line">    let arr = [];</span><br><span class="line">    for (let i = 0; i &lt; len; i++) &#123;</span><br><span class="line">        arr.push(newX % 10);</span><br><span class="line">        newX = Math.floor(newX / 10);</span><br><span class="line">    &#125;</span><br><span class="line">    result = arr.join(&quot;&quot;);</span><br><span class="line">    if (x &gt; 0 &amp;&amp; +result &lt;= max) return +result;</span><br><span class="line">    if (x &lt; 0 &amp;&amp; -result &gt;= min) return -result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;官方提示的方法，用到的是取余的操作。实现思路就是通过对 10 取余，得到个位数的数值。然后再将结果真的除以 10，并取整。实现的思路和倒计时相似，通过取余再取整，将数值不断的减少一位，然后获得个位数数值。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在我第一次实现官方提示算法时，还是利用了数组去操作，没有用到数据操作的特性，所以从方法上看，思路是优化了，但是写法还没有优化。</p>
+<h5 id="4）官方提示算法·改"><a href="#4）官方提示算法·改" class="headerlink" title="4）官方提示算法·改"></a>4）官方提示算法·改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    let min = Math.pow(-2, 31);</span><br><span class="line">    let max = Math.pow(2, 31) - 1;</span><br><span class="line">    let len = x.toString().length;</span><br><span class="line">    let result = 0;</span><br><span class="line">    for (let i = x &gt; 0 ? len - 1 : len - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">        result += x % 10 * Math.pow(10, i);</span><br><span class="line">        x = x &gt; 0 ? Math.floor(x / 10) : Math.ceil(x / 10);</span><br><span class="line">    &#125;</span><br><span class="line">    if (result &gt; 0 &amp;&amp; result &lt;= max) return result;</span><br><span class="line">    if (result &lt; 0 &amp;&amp; result &gt;= min) return result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实算不上是优化，只是又换了种更装 X 的写法。直接将取余后的数再乘以相应的位数对应的 10 的 i 次方，然后相加，达到直接将数值反转的结果。麻烦点就是正数与负数的取整不同。</p>
+<h5 id="5）性能最佳写法"><a href="#5）性能最佳写法" class="headerlink" title="5）性能最佳写法"></a>5）性能最佳写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var reverse = function(x) &#123;</span><br><span class="line">    let min = Math.pow(-2, 31);</span><br><span class="line">    let max = Math.pow(2, 31) - 1;</span><br><span class="line">    let strX = Math.abs(x).toString();</span><br><span class="line">    let result = &quot;&quot;;</span><br><span class="line">    for (let i = strX.length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">         result += strX[i];</span><br><span class="line">    &#125;</span><br><span class="line">    if (x &gt; 0 &amp;&amp; +result &lt;= max) return +result;</span><br><span class="line">    if (x &lt; 0 &amp;&amp; -result &gt;= min) return -result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写完官方提示方法之后，实在想不出其他办法了，就去看了下最佳的写法。其实最佳写法跟官方写法，在性能上是不分上下的，差距非常小。<br><br>但最佳方法应用到了字符串拼接的特性，就让人眼前一亮。<br><br>通过反向遍历，将字符串倒拼接，就实现了反转字符串的效果。最后再判断正负及数值范围，返回结果。</p>
 
       
     </div>
@@ -444,7 +443,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/" title="javascript精雕细琢（二）：++、--那点事">https://www.lvhailong.com/javascript精雕细琢（二）：-、-那点事/</a>
+    <a href="https://www.lvhailong.com/LeetCode龟速前进7：反转整数/" title="LeetCode龟速前进7：反转整数">https://www.lvhailong.com/LeetCode龟速前进7：反转整数/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -461,6 +460,8 @@
           
             <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
           
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
         </div>
       
 
@@ -472,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/深入浅出CSS（一）：line-height与vertical-align的性质/" rel="next" title="深入浅出CSS（一）：line-height与vertical-align的性质">
-                <i class="fa fa-chevron-left"></i> 深入浅出CSS（一）：line-height与vertical-align的性质
+              <a href="/LeetCode龟速前进1：两数之和/" rel="next" title="LeetCode龟速前进1：两数之和">
+                <i class="fa fa-chevron-left"></i> LeetCode龟速前进1：两数之和
               </a>
             
           </div>
@@ -481,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/javascript精雕细琢（三）：作用域与作用域链/" rel="prev" title="javascript精雕细琢（三）：作用域与作用域链">
-                javascript精雕细琢（三）：作用域与作用域链 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和–在数学运算中的计算规则"><span class="nav-number">2.</span> <span class="nav-text">++和–在数学运算中的计算规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和–在变量引用时的计算规则"><span class="nav-number">3.</span> <span class="nav-text">++和–在变量引用时的计算规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和–的数据转换应用"><span class="nav-number">4.</span> <span class="nav-text">++和–的数据转换应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反转整数"><span class="nav-number">1.</span> <span class="nav-text">反转整数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题笔记"><span class="nav-number">1.0.2.</span> <span class="nav-text">解题笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）数组方法"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">1）数组方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）数组方法·改"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">2）数组方法·改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3）官方提示算法"><span class="nav-number">1.0.2.0.3.</span> <span class="nav-text">3）官方提示算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4）官方提示算法·改"><span class="nav-number">1.0.2.0.4.</span> <span class="nav-text">4）官方提示算法·改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5）性能最佳写法"><span class="nav-number">1.0.2.0.5.</span> <span class="nav-text">5）性能最佳写法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
