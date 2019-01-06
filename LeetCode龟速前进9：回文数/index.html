@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JS,">
+  <meta name="keywords" content="JS,算法,">
 
 
 
@@ -86,23 +86,18 @@
 
 
 
-<meta name="description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
-<meta name="keywords" content="JS">
+<meta name="description" content="回文数题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:     输入: 121     输出: true  示例 2:     输入: -121     输出: false     解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。  示例 3:     输入: 10     输出: false">
+<meta name="keywords" content="JS,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript精雕细琢（三）：作用域与作用域链">
-<meta property="og:url" content="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/index.html">
+<meta property="og:title" content="LeetCode龟速前进9：回文数">
+<meta property="og:url" content="https://www.lvhailong.com/LeetCode龟速前进9：回文数/index.html">
 <meta property="og:site_name" content="码到成功">
-<meta property="og:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
+<meta property="og:description" content="回文数题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:     输入: 121     输出: true  示例 2:     输入: -121     输出: false     解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。  示例 3:     输入: 10     输出: false">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-66059d6748cb764f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-b1dc7ed3dfa4b8df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4473919-c9fa725c556b8216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-01-01T15:45:22.151Z">
+<meta property="og:updated_time" content="2019-01-06T15:20:42.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript精雕细琢（三）：作用域与作用域链">
-<meta name="twitter:description" content="引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="LeetCode龟速前进9：回文数">
+<meta name="twitter:description" content="回文数题目判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:     输入: 121     输出: true  示例 2:     输入: -121     输出: false     解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。  示例 3:     输入: 10     输出: false">
 
 
 
@@ -132,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/">
+  <link rel="canonical" href="https://www.lvhailong.com/LeetCode龟速前进9：回文数/">
 
 
 
 
 
-  <title>javascript精雕细琢（三）：作用域与作用域链 | 码到成功</title>
+  <title>LeetCode龟速前进9：回文数 | 码到成功</title>
   
 
 
@@ -255,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/">
+    <link itemprop="mainEntityOfPage" href="https://www.lvhailong.com/LeetCode龟速前进9：回文数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="吕海龙(Lyu Hailoong)">
@@ -272,7 +267,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">javascript精雕细琢（三）：作用域与作用域链</h2>
+          <h2 class="post-title" itemprop="name headline">LeetCode龟速前进9：回文数</h2>
         
 
         <div class="post-meta">
@@ -284,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-01T22:01:21+08:00">
-                2019-01-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T23:18:43+08:00">
+                2019-01-06
               </time>
             
 
@@ -300,8 +295,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-01T23:45:22+08:00">
-                2019-01-01
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-06T23:20:42+08:00">
+                2019-01-06
               </time>
             
           </span>
@@ -319,19 +314,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -348,8 +332,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/javascript精雕细琢（三）：作用域与作用域链/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/javascript精雕细琢（三）：作用域与作用域链/" itemprop="commentCount"></span>
+                <a href="/LeetCode龟速前进9：回文数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/LeetCode龟速前进9：回文数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.5k
+                  1.6k
                 </span>
               
 
@@ -392,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5min
+                  6min
                 </span>
               
             </div>
@@ -413,24 +397,32 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域与作用域链是 JS 应用中无时无刻不在影响程序运行的关键属性，但是由于它的不可见性，或者说它存在的过于普遍，简直就像空气一样。所以对它的谈及，都很简单，而理解起来也不复杂。<br><br></p>
+        <h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><pre><code>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+示例 1:
+    输入: 121
+    输出: true
+
+示例 2:
+    输入: -121
+    输出: false
+    解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+
+示例 3:
+    输入: 10
+    输出: false
+    解释: 从右向左读, 为 01 。因此它不是一个回文数。
+
+进阶:
+    你能不将整数转为字符串来解决这个问题吗？
+</code></pre><hr>
 <a id="more"></a>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是由于它的重要性，对它做一个篇幅的说明，也是一件理所应当的事情。而且它其实也并没有理解上那么简单。<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文对作用域及作用域链的说明，可能并不全面。笔者尽量以自身开发过程中的理解，做到表述全面。</p>
-<h3 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;按照《JavaScript 高级程序设计》第 3 版中的定义——<strong>执行环境</strong>定义了变量或函数有权访问其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的<strong>变量对象</strong>，环境中定义的所有变量和函数都保存在这个对象中。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于环境的简单理解，可以理解为<strong>{}一个大括号就是一个执行环境</strong>。如<strong>{ {} }，就是包含关系的两个执行环境</strong>。而由于所有的函数和变量，最终都是通过最外围有对应的调用，才能最终实现运行，所以将<strong>最外围的执行环境</strong>定义为<strong>全局执行环境</strong>，在宿主为 web 浏览器时，全局执行环境就为<strong>window 对象</strong>。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个函数都有自己的执行环境。当执行程序进入一个函数时，函数的环境就会被推入一个<strong>环境栈</strong>中。而在函数执行之后，栈将环境弹出，把控制权返回给之前的执行环境。之后，该环境因为<strong>执行完毕</strong>，随即被<strong>销毁</strong>。但有一个例外，<strong>全局环境将永远不会被销毁，直到程序被关闭，如关闭浏览器。</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4473919-f37a016b7cfe52d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br></p>
-<p>由上图我们清晰的看到 JavaScript 的两个阶段的执行流程。</p>
-<h3 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域链和作用域是一个包含关系。当代码在一个环境中执行时，会创建变量对象的一个作用域链。而作用域链中，包含的就是一个个有序排列的作用域。作用域链的作用，就是<strong>保证执行环境中的变量和函数的有序访问</strong>。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每次的变量或函数声明，都会形成一个<strong>标识符（即变量名或函数名）。</strong> 作用域链中的向上查找，实际上就是标识符的查找。找到匹配的标识符，就调用它的值。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域链中包含的每个作用域对象，其中都包含着它自身环境中可访问的变量或函数（script 作用域中，为全部的变量和函数;函数作用域中，子函数调用父函数环境中的变量或函数会形成闭包，那么可访问变量就为闭包调用的变量）。换一种角度理解的话，这些环境中可访问的变量或函数就是标识符，是当前作用域中可通过作用域链向上查找的标识符。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一大段的文字不光读起来枯燥，理解起来也困难。所以，stop talking，show code。<br></p>
-<hr>
-<p><strong>以函数为例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    let a = 1; //注释此行，保留其他a，c()打印2，并且作用域链失去闭包对象</span><br><span class="line">    let b = 0;</span><br><span class="line"></span><br><span class="line">    return () =&gt; &#123; //形成闭包环境</span><br><span class="line">        console.log(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let a = 2; //注释此行及test中的a，c()打印3</span><br><span class="line">    window.a = 3;  //注释全部a，报错</span><br><span class="line"></span><br><span class="line">    const c = test();</span><br><span class="line">    c();</span><br><span class="line"></span><br><span class="line">    console.dir(test);</span><br><span class="line">    console.dir(c);</span><br></pre></td></tr></table></figure>
-<p><br><br>以上代码，通过<strong>3次注释</strong>以及<strong>chrome浏览器打印</strong>，可以清晰的看到作用域与作用域链的形成及作用域链<strong>按顺序查找</strong>的特性</p>
-<p><strong>1）首先是闭包调用——所有 a 都不注释</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-66059d6748cb764f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>由上图可以看出，此时作用域链中存在<strong>3 个作用域对象。</strong> 按索引顺序为<strong>0—Closure 闭包环境、1—Script 标签环境、2—Global 全局环境</strong>;<br><br><strong>索引顺序就是标识符的查找顺序</strong>，所以当执行函数 c()时，先在 Closure 闭包环境中查找，然后是 Script 标签作用域，最后是 Global 全局作用域。<strong>因为形成了闭包，那么标识符的查找肯定能在闭包环境中找到对应结果，所以打印 1</strong>;<br><br>值得注意的一点是，Closure 与 Script 作用域对象中，存储的标识符的不同。<strong>closure 只存储调用值 a = 1，并没有存储 b = 0</strong>。而<strong>Script 中将环境中的所有标识符都存在了对象中</strong>;<br><br><br></p>
-<p><strong>2）然后是取消闭包调用，改为 Script 标签作用域查找——注释 test 中的 a = 1</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-b1dc7ed3dfa4b8df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>由上图可以看出，此时作用域链中的 Closure 闭包作用域消失，只剩下 2 个对象 0—Script 标签环境、2—Global 全局环境;<br><br>那么同样按索引顺序查找，找到了 Script 标签环境中的 a = 2，没有继续寻找 Global 全局环境中的 window.a = 3，最终打印 2;<br><br><br></p>
-<p><strong>3）最后是 Global 全局作用域查找——注释 test 中的 a = 1 及 script 中的 a = 2</strong><br><br><img src="http://upload-images.jianshu.io/upload_images/4473919-c9fa725c556b8216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br><br>与 2）中情况对比，作用域链中的对象没有改变。但是 Script 对象中的标识符，随着 a = 2 被注释而消失<br><br>按索引顺序查找，找到了 Script 标签环境中没有 a，继续寻找 Global 全局环境，最终找到 window.a = 3，打印 3;<br><br><br><br>函数 test 的打印，从始至终都是 Script 标签作用域及 Global 全局作用域。理解了 c 函数的作用域链，自然就明白了函数 test 的，所以不再展开赘述。<br><br><br></p>
-<p><strong>如有错误或阐述不充分之处，欢迎指正~</strong></p>
+<h3 id="解题笔记"><a href="#解题笔记" class="headerlink" title="解题笔记"></a>解题笔记</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这道题，我总共用时 1 小时，只写出了纯数学方法的思路。经测试，最佳时间在前 99%里面，所以我开始还比较肯定我的思路和写法。直到我看了最佳写法，感受到了暴击，思路跟大神还是没法比。</p>
+<h5 id="1）我的方法——最佳用时-264ms"><a href="#1）我的方法——最佳用时-264ms" class="headerlink" title="1）我的方法——最佳用时 264ms"></a>1）我的方法——最佳用时 264ms</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var isPalindrome = function(x) &#123;</span><br><span class="line">  if (x &lt; 0) return false;</span><br><span class="line">  if(x &gt;=0 &amp;&amp; x &lt; 10) return true;</span><br><span class="line">  const len = Math.floor(Math.log10(x) + 1);</span><br><span class="line">  const count = len % 2 ? Math.floor(len / 2) : len / 2,</span><br><span class="line">        flag = len % 2 ?  Math.ceil(len / 2) : len / 2,</span><br><span class="line">        target = Math.floor(x / Math.pow(10,flag));</span><br><span class="line">  let num = 0;</span><br><span class="line">  for (let i = count;i &gt; 0 ;i--) &#123;</span><br><span class="line">    num += (x % 10) * Math.pow(10,i - 1);</span><br><span class="line">    x = Math.floor(x / 10);</span><br><span class="line">  &#125;</span><br><span class="line">  if (num === target) return true;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从我的写法上面可以看出，我是受了前面几道题的方法影响的，尤其是受了第 7 题反转整数的影响；<br>这道题在思路上，我的方向是没错的，只需要取对称长度，然后对后一半的数字进行反转，与前一半的数值去进行比较，如果相等就是回文数;<br>但是在方法上，我还是没有脱离字符串和数组的方法逻辑——取长度，然后根据长度循环。对传入数字参数取余后再乘以相应的位数值，将参数减一位，通过循环实现数字的反转。这完全就是第 7 题官方思路的实践；<br>唯一的难点在于对数字长度的获取，这个地方卡了半小时左右，最后想到通过 log10 的方法获取长度。只要长度知道了，后边的操作就比较简单了;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总结这一方法，思路还是太固定了。可以说没有扩大思考空间。虽然没有使用字符串和数组方法，但是思路上还是太拘泥于惯性。可以说即没有方法上的突破，也没有写法上的突破。就是死板的按照条件实现了结果。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;没想到的点是：1）其实 target 变量就是循环后的 x；2）可以通过判断 len 的奇偶性，直接操作循环后的 x；3）循环次数可以是一个值，不必分奇偶性。<br>所以 count、flag、target 其实都是没必要的。</p>
+<h5 id="2）我的方法·改"><a href="#2）我的方法·改" class="headerlink" title="2）我的方法·改"></a>2）我的方法·改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var isPalindrome = function (x) &#123;</span><br><span class="line">  if (x &lt; 0 || x % 10 === 0 &amp;&amp; x !== 0) return false;</span><br><span class="line">  if (x &gt;= 0 &amp;&amp; x &lt; 10) return true;</span><br><span class="line">  let length = parseInt(Math.log10(x));</span><br><span class="line">  let num = 0;</span><br><span class="line">  for (let i = parseInt((length - 1) / 2); i &gt;= 0; i--) &#123;</span><br><span class="line">    num += x % 10 * Math.pow(10, i);</span><br><span class="line">    x = parseInt(x / 10);</span><br><span class="line">  &#125;;</span><br><span class="line">  length % 2 ? null : x = parseInt(x / 10);</span><br><span class="line">  if (num === x) return true;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3）最佳性能写法——最佳用时-236ms"><a href="#3）最佳性能写法——最佳用时-236ms" class="headerlink" title="3）最佳性能写法——最佳用时 236ms"></a>3）最佳性能写法——最佳用时 236ms</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var isPalindrome = function(x) &#123;</span><br><span class="line">  if(x &lt; 0 || ( x !==0 &amp;&amp; x % 10 === 0)) return false;</span><br><span class="line">  if(x &gt; = 0 &amp;&amp; x &lt; 10) return true;</span><br><span class="line">  let intNum = 0;</span><br><span class="line">  while (x &gt; intNum)&#123;</span><br><span class="line">    intNum = intNum * 10 + x % 10;</span><br><span class="line">    x = parseInt(x / 10);</span><br><span class="line">  &#125;</span><br><span class="line">  return x === intNum || x===parseInt(intNum / 10);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然说性能上的差别说不上质的提升，但是思路上真是让我感受到了人与人之间的差距;<br><br><strong>首先：</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在开始的 if 判断上，只要&lt;0 或者是 10 的倍数，就判定不是回文；<br><br><strong>然后：</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于循环的定义：比较出彩的地方是对两个数字的循环操作;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为对循环次数不确定，所以用 while 来循环;然后通过一个数字位数相加，另一个数字位数相减来控制循环结束;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果是回文数字，只会出现两种情况——1）num === intNum；此时参数 x 的长度是偶数；2）num &lt; intNum；此时参数 x 的长度是奇数，当 intNum 比 num 多一位时，循环肯定停止;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而至于不是回文数的情况，不论奇偶性，只要出现 intNum 的位数比 num 多一位，循环就会停止。所以循环的次数，最多就是 x 参数长度的一半再+1。<br><br><strong>再来看循环内部的操作：</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>首先</strong>intNum _ 10，实际上是给 intNum 当前值增加一位，将个位数的位置腾出来给 num % 10，同时也给 intNum 其他数字往前进一位。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>然后</strong>num%10 则是把 num 的个位数取出来，通过 intNum _ 10 的进位操作，num&amp;10 的个位数，将调整到它应该在的位置。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>再然后</strong>将 num / 10 并取整，等同于将 num 长度-1，不断抹除个位数的数字。这实际上就是反转 num。对数字反转的思路上，我想到了，但是写法上，真是差距太大了。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>最后：</strong> 如果是回文数，并且 x 的长度是偶数，则 num === intNum。如果是 x 的长度是奇数，<strong>那么 intNum 会比 num 多出处于 x 中间的一位数，这个数位于 intNum 的尾部。</strong> 所以将 intNum / 10 取整，抹除 intNum 的最后一位数字后，再进行比较。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果不是回文数，则不论 x 的奇偶性，两种情况都有可能出现，但是都不可能相等。</p>
+<p>这种方法，相比于我自己想出来的方法，在循环、数字反转以及数字长度的操作上，完全是碾压性的。自己在算法上的提升，看来还有十分巨大的空间。</p>
 
       
     </div>
@@ -451,7 +443,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/" title="javascript精雕细琢（三）：作用域与作用域链">https://www.lvhailong.com/javascript精雕细琢（三）：作用域与作用域链/</a>
+    <a href="https://www.lvhailong.com/LeetCode龟速前进9：回文数/" title="LeetCode龟速前进9：回文数">https://www.lvhailong.com/LeetCode龟速前进9：回文数/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -468,6 +460,8 @@
           
             <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
           
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
         </div>
       
 
@@ -479,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/javascript精雕细琢（二）：-、-那点事/" rel="next" title="javascript精雕细琢（二）：++、--那点事">
-                <i class="fa fa-chevron-left"></i> javascript精雕细琢（二）：++、--那点事
+              <a href="/LeetCode龟速前进7：反转整数/" rel="next" title="LeetCode龟速前进7：反转整数">
+                <i class="fa fa-chevron-left"></i> LeetCode龟速前进7：反转整数
               </a>
             
           </div>
@@ -488,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/LeetCode龟速前进1：两数之和/" rel="prev" title="LeetCode龟速前进1：两数之和">
-                LeetCode龟速前进1：两数之和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行环境"><span class="nav-number">2.</span> <span class="nav-text">执行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域与作用域链"><span class="nav-number">3.</span> <span class="nav-text">作用域与作用域链</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回文数"><span class="nav-number">1.</span> <span class="nav-text">回文数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.0.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题笔记"><span class="nav-number">1.0.2.</span> <span class="nav-text">解题笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1）我的方法——最佳用时-264ms"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">1）我的方法——最佳用时 264ms</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）我的方法·改"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">2）我的方法·改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3）最佳性能写法——最佳用时-236ms"><span class="nav-number">1.0.2.0.3.</span> <span class="nav-text">3）最佳性能写法——最佳用时 236ms</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
